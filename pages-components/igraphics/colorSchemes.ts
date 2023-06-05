@@ -1,44 +1,6 @@
 export const patterns = ['big-right', 'light-right', 'light-left', 'bottom', 'worldcup'];
 
 export const colorSchemes = [
-  {
-    value: 'world-cup',
-    colors: {
-      bg: '#001451',
-      titleFont: '#fff',
-      titleFontLight: '#fff',
-      titleBg: '#ECDA9B',
-      titleBgLight: '#ECDA9B',
-      subTitleFont: '#FFFFFF',
-      subTitleBg: '#29292D',
-      subTitleDelimiter: '#ECDA9B',
-      subTitleDelimiterLight: '#ECDA9B',
-      bgGray: 'rgba(48, 47, 52, 0.7)',
-      cardWrapperBg: 'rgba(6, 49, 139, 0.6)',
-      scoreBg: '#fff',
-      playerBarBg: '#001134',
-      playerBarName: '#FFFFFF',
-      playerBarTeam: '#0481FE',
-      bar: '#ECDA9B',
-      socialBar: '#0481fe',
-      rowOdd: '#FFFFFF',
-      rowEven: '#FAFAFA',
-      rowFont: '#001134',
-      rowBorder: '#F3F3F3',
-      rowBg: '#ECDA9B',
-      rowHeadFont: '#FFFFFF',
-      linkIcon: '#F8DF11',
-      linkFont: '#ffffff',
-      patternColor: '#0481FE',
-      fieldBg: '#001134',
-      fieldBorder: 'rgba(236, 218, 155, 0.4)',
-      fieldPlayer: 'rgba(236, 218, 155, 0.4)',
-
-      bgGradientStart: '#0481FE',
-      bgGradientMiddle: '#0481FE',
-      bgGradientEnd: '#0481FE',
-    }
-  },
   {    
     value: 'base-white',
     colors: {
@@ -933,7 +895,6 @@ export const colorSchemes = [
       bgGradientEnd: '#2a2e34',
     },
   },
-
   {
     value: 'pink',
     colors: {
@@ -970,5 +931,43 @@ export const colorSchemes = [
       bgGradientMiddle: '#a1293a',
       bgGradientEnd: '#a42838',
     },
+  },
+  {
+    value: 'world-cup',
+    colors: {
+      bg: '#001451',
+      titleFont: '#fff',
+      titleFontLight: '#fff',
+      titleBg: '#ECDA9B',
+      titleBgLight: '#ECDA9B',
+      subTitleFont: '#FFFFFF',
+      subTitleBg: '#29292D',
+      subTitleDelimiter: '#ECDA9B',
+      subTitleDelimiterLight: '#ECDA9B',
+      bgGray: 'rgba(48, 47, 52, 0.7)',
+      cardWrapperBg: 'rgba(6, 49, 139, 0.6)',
+      scoreBg: '#fff',
+      playerBarBg: '#001134',
+      playerBarName: '#FFFFFF',
+      playerBarTeam: '#0481FE',
+      bar: '#ECDA9B',
+      socialBar: '#0481fe',
+      rowOdd: '#FFFFFF',
+      rowEven: '#FAFAFA',
+      rowFont: '#001134',
+      rowBorder: '#F3F3F3',
+      rowBg: '#ECDA9B',
+      rowHeadFont: '#FFFFFF',
+      linkIcon: '#F8DF11',
+      linkFont: '#ffffff',
+      patternColor: '#0481FE',
+      fieldBg: '#001134',
+      fieldBorder: 'rgba(236, 218, 155, 0.4)',
+      fieldPlayer: 'rgba(236, 218, 155, 0.4)',
+
+      bgGradientStart: '#0481FE',
+      bgGradientMiddle: '#0481FE',
+      bgGradientEnd: '#0481FE',
+    }
   },
 ];
