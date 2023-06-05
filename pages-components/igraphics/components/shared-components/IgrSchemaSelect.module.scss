@@ -10,11 +10,13 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+
     .iconWrapper {
       min-width: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
+
       .selectIcon {
         color: #adb5bd;
       }
@@ -28,24 +30,29 @@
     object-fit: cover;
     position: absolute;
     z-index: -1;
+
     .spark {
       height: 1500px;
     }
+
     .topLeft {
       position: absolute;
       top: 0;
       left: 0;
     }
+
     .topRight {
       position: absolute;
       top: 0;
       right: 0;
     }
+
     .bottomLeft {
       position: absolute;
       bottom: 0;
       left: 0;
     }
+
     .bottomRight {
       position: absolute;
       bottom: 0;
@@ -76,6 +83,7 @@
   clip-path: polygon(2px 0%, 100% 0, 100% calc(100% - 2px), calc(100% - 2px) 100%, 0 100%, 0 2px);
   border: 1px solid rgba(0, 0, 0, 0.4);
   position: relative;
+
   &:after,
   &:before {
     content: ' ';
@@ -86,10 +94,12 @@
     background: rgba(0, 0, 0, 0.4);
     transform: rotate(-45deg);
   }
+
   &:after {
     top: -2px;
     left: -2px;
   }
+
   &:before {
     bottom: -2px;
     right: -2px;
@@ -132,6 +142,7 @@
       display: flex;
       align-items: center;
     }
+
     .headerText {
       width: 12px;
       height: 2px;
@@ -160,6 +171,7 @@
     }
   }
 }
+
 .colorsContainerSelectActive {
   border: 3px solid var(--ion-color-tertiary);
   box-shadow: 0 0 20px var(--ion-color-tertiary);
@@ -172,6 +184,7 @@
   clip-path: polygon(4px 0%, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
   border: 2px solid rgba(0, 0, 0, 0.2);
   position: relative;
+
   &:after {
     content: ' ';
     display: block;
@@ -183,6 +196,7 @@
     background: rgba(0, 0, 0, 0.2);
     transform: rotate(-45deg);
   }
+
   &:before {
     content: ' ';
     display: block;
@@ -205,9 +219,11 @@
   box-shadow: 0 0 2px 2px black;
   cursor: pointer;
   margin-top: 10px;
+
   &:hover {
     box-shadow: 0 0 0 2px #a68a00;
   }
+
   img {
     height: 100%;
     width: 100%;
@@ -221,22 +237,58 @@
       transform: scale(1.2);
     }
   }
+
   &.light-right {
     img {
       margin-top: 10px;
     }
   }
+
   &.light-left {
     img {
       margin-top: 16px;
     }
   }
+
   &.bottom {
     img {
       margin-top: 20px;
     }
   }
+
+  &.worldcup {
+    filter: brightness(0);
+
+    .worldTopLeft {
+      transform: scale(0.08);
+      position: absolute;
+      top: -450px;
+      left: -620px;
+    }
+
+    .worldTopRight {
+      transform: scale(0.09);
+      position: absolute;
+      top: -148px;
+      left: -80px;
+    }
+
+    .worldBottomLeft {
+      transform: scale(0.09);
+      position: absolute;
+      top: -25px;
+      left: -100px;
+    }
+
+    .worldBottomRight {
+      position: absolute;
+      bottom: -50px;
+      right: -50px;
+      transform: scale(0.5);
+    }
+  }
 }
+
 .selectedPattern {
   box-shadow: 0 0 0 3px var(--ion-color-tertiary) !important;
 }
@@ -244,12 +296,14 @@
 .colorsContainerSelect {
   position: relative;
   overflow: hidden;
+
   .container {
     position: absolute;
     top: 5px;
     left: 5px;
     z-index: 1;
   }
+
   .pattern {
     position: absolute;
     top: 65%;

@@ -19,18 +19,62 @@
     bottom: -1800px;
     right: -1600px;
   }
+
   .bottomRight {
     bottom: -2000px;
   }
+
   .lightRight {
     bottom: -2500px;
     right: -2000px;
   }
+
   .lightLeft {
     left: 0;
     bottom: -2700px;
   }
+
   .bottom {
     bottom: -2800px;
+  }
+
+  .world {
+    width: 100%;
+    height: 100%;
+  }
+
+  .worldBackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: scale(2);
+  }
+
+  .worldTopLeft {
+    position: absolute;
+    top: -500px;
+    left: 500px;
+    transform: scale(3);
+  }
+
+  .worldTopRight {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transform: scale(3.5);
+  }
+
+  .worldBottomLeft {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transform: scale(3.5);
+  }
+
+  .worldBottomRight {
+    position: absolute;
+    bottom: -2800px;
+    right: -2500px;
   }
 }
