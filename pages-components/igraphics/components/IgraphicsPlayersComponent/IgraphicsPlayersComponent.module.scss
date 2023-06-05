@@ -1,0 +1,130 @@
+.tableWrapper {
+  width: 4000px;
+  position: relative;
+  padding: 150px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.cardWrapper {
+  width: 1150px;
+  margin: 100px 50px;
+  input {
+    font-size: 120px;
+  }
+  .tableHead {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+
+    .inputTitle {
+      color: #fff;
+      font-size: 120px;
+      font-family: var(--header-font-family);
+    }
+  }
+}
+
+.title {
+  height: 210px;
+  width: 100%;
+  background: transparent;
+  text-align: center;
+  line-height: 1;
+  font-size: 100px;
+  font-weight: 900;
+  border: none;
+  margin-bottom: -20px;
+  outline: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.player {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin-left: 100px;
+
+  &.hidden {
+    display: none;
+  }
+
+  .playerPhoto {
+    min-width: 225px;
+    height: 225px;
+    position: relative;
+    //background: #9e9e9e;
+    margin-left: -100px;
+    .borderIcon {
+      height: 225px;
+      width: 225px;
+      position: absolute;
+      top: 3px;
+      left: 2px;
+      z-index: 10;
+    }
+    .borderIconSecond {
+      height: 230px;
+      width: 230px;
+      position: absolute;
+      top: -3px;
+      left: -1px;
+      z-index: 10;
+    }
+  }
+
+  input {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-family: var(--ion-font-family);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 30px;
+    .playerName {
+      font-size: 55px;
+      font-weight: 700;
+      text-align: left;
+      width: 750px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .team {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .playerTeam {
+        font-size: 42px;
+        font-weight: 600;
+        padding: 0 20px;
+        text-align: left;
+        width: 600px;
+      }
+    }
+  }
+  .value {
+    font-size: 65px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+    height: 70%;
+    font-family: var(--header-font-family);
+    border-left: 5px solid;
+  }
+}

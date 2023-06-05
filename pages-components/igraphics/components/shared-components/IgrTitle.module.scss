@@ -1,0 +1,16 @@
+.title {
+  width: fit-content;
+  height: fit-content;
+  input {
+    font-family: var(--header-font-family);
+    text-transform: uppercase;
+    color: var(--ion-color-light);
+    padding: 15px 50px;
+    padding-top: 35px;
+    border-top-right-radius: 100px;
+  }
+}
+
+.hidden {
+  display: none;
+}

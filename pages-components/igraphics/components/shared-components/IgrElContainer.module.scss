@@ -1,0 +1,29 @@
+.containerWrapper {
+  border: 6px dashed rgba(255, 255, 255, 0);
+  width: 100%;
+  cursor: pointer;
+  z-index: 10000;
+  position: relative;
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    .closeIcon {
+      opacity: 1;
+    }
+  }
+}
+
+.closeIcon {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background: #555;
+  color: black;
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  opacity: 0;
+  transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  &:hover {
+    background: white;
+  }
+}

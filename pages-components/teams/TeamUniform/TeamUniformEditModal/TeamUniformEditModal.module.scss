@@ -1,0 +1,9 @@
+.uniformPath {
+  &:hover {
+    fill: rgb(224, 224, 224);
+    transition: fill 0.15s ease-in-out;
+  }
+  &.activeSlot {
+    stroke-dasharray: 1;
+  }
+}

@@ -1,0 +1,45 @@
+.links {
+  margin: 0 200px;
+  margin-top: 0;
+  width: calc(100% - 400px);
+  align-items: center;
+  justify-content: space-evenly;
+  height: 320px;
+  font-size: 70px;
+  position: relative;
+  pointer-events: auto;
+  display: block;
+
+  .wrapper {
+    height: 320px;
+    gap: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
+.linkWrapper {
+  width: fit-content;
+}
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ion-color-light);
+  svg {
+    margin-right: 30px;
+  }
+  .inputLink {
+    background: none;
+    border: none;
+    font-size: 70px;
+    color: var(--ion-color-light);
+    width: 350px;
+    text-align: center;
+  }
+}
+
+.hidden {
+  display: none;
+}

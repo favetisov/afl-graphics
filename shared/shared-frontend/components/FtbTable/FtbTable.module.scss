@@ -1,0 +1,50 @@
+.table {
+  table-layout: auto;
+  border-spacing: 0;
+  tr {
+    width: 100%;
+    td {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  thead {
+    height: 40px;
+    font-size: var(--font-size-middle);
+  }
+
+  tbody {
+    tr {
+      cursor: pointer;
+      &:hover {
+        background: #fcfcfc;
+      }
+    }
+  }
+}
+
+.tbody {
+  position: relative;
+  * {
+    user-select: none;
+  }
+}
+
+.dragging {
+  background: #fcfcfc;
+  border-bottom: none;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  > * {
+    opacity: 0.4;
+  }
+}
+
+.handlerTd {
+  width: 40px;
+  min-width: 40px;
+  cursor: pointer;
+  padding-top: 14px !important;
+}

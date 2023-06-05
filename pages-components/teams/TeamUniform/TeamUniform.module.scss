@@ -1,0 +1,53 @@
+.uniform {
+  position: relative;
+
+  svg {
+    g {
+      cursor: pointer;
+    }
+  }
+
+  .closeIconContainer {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 3px;
+    width: 20px;
+    height: 20px;
+
+    .closeIcon {
+    }
+  }
+}
+
+.uniformPath {
+  &:hover {
+    fill: rgb(224, 224, 224);
+    transition: fill 0.15s ease-in-out;
+  }
+  &.activeSlot {
+    stroke-dasharray: 1;
+  }
+}
+
+.newUniformContainer {
+  position: relative;
+  cursor: pointer;
+  .newUniformButton {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    margin-top: 15px;
+    z-index: 10;
+    padding: 0;
+  }
+}

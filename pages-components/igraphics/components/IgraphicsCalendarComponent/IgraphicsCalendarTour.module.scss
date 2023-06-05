@@ -1,0 +1,28 @@
+.container {
+  .table {
+    //width: fit-content;
+    width: 1400px;
+    .tableHead {
+      //width: 1000px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      border-radius: 15px 15px 0 0;
+
+      .inputTitle {
+        color: #fff;
+        font-size: 120px;
+        font-family: var(--header-font-family);
+        margin-bottom: 20px;
+      }
+    }
+    .tableBody {
+      border-radius: 25px;
+      background: var(--igr-rowOdd);
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}

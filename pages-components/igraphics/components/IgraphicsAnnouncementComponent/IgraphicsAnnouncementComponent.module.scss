@@ -1,0 +1,39 @@
+.tableWrapper {
+  width: 4000px;
+  height: 4000px;
+  position: relative;
+  padding: 150px 0;
+  background: radial-gradient(transparent, black);
+  color: var(--ion-color-light);
+
+  input {
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  .title {
+    width: 90%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 1000px;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    border-top: 10px solid #f8df11;
+    border-bottom: 10px solid #f8df11;
+
+    .text {
+      color: var(--ion-color-light);
+      font-size: 200px;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}

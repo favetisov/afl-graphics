@@ -1,0 +1,18 @@
+.tableWrapper {
+  width: 6000px;
+  position: relative;
+  padding: 150px;
+
+  input {
+    border: none;
+    outline: none;
+    background: none;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+    margin: 150px 0;
+  }
+}

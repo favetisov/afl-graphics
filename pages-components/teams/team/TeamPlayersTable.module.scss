@@ -1,0 +1,51 @@
+.numberTd {
+  min-width: 35px;
+  text-align: center;
+  font-size: var(--font-size-small);
+}
+
+.nameTd {
+  font-size: var(--font-size-small);
+  width: 100%;
+  text-align: left;
+}
+
+.photoWrapper {
+  min-width: 60px;
+
+  .photo {
+    img {
+      height: 61px;
+      top: 1px;
+      border-radius: 22px;
+    }
+  }
+}
+
+.positionTd {
+  min-width: 40px;
+  text-align: center;
+  font-size: var(--font-size-small);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  .name {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .birthdayTd {
+    display: none !important;
+  }
+}
+
+.birthdayTd {
+  text-align: center;
+  min-width: 90px;
+}
+td.birthdayTd {
+  font-size: var(--font-size-small);
+}

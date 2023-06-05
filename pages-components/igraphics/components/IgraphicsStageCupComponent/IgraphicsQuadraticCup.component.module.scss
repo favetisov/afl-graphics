@@ -1,0 +1,22 @@
+.cupNet {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 55px;
+  }
+
+  .svgNet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}

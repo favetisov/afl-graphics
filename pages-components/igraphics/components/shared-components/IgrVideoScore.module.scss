@@ -1,0 +1,93 @@
+.scorePlate {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  height: 145px;
+  input {
+    font-family: var(--ion-font-family);
+  }
+  .team {
+    background: var(--igr-rowOdd);
+    height: 100%;
+    min-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 10px;
+
+    .formColor {
+      width: 25px;
+      height: 25px;
+      background: red;
+      border-radius: 5px;
+    }
+    .inputName {
+      font-size: 80px;
+      background: none;
+      border: none;
+      width: 250px;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      height: 120px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .borderForm {
+      position: absolute;
+      top: -3px;
+      z-index: -1;
+
+      &.teamColor {
+        z-index: -2;
+      }
+    }
+    &.home {
+      .borderForm {
+        left: -72px;
+
+        &.teamColor {
+          left: -95px;
+        }
+      }
+    }
+    &.away {
+      .borderForm {
+        right: -72px;
+
+        &.teamColor {
+          right: -95px;
+        }
+      }
+    }
+  }
+  .score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    font-size: 90px;
+    font-weight: 700;
+    height: 100%;
+    border-top-right-radius: 60px;
+
+    .inputScore {
+      font-size: 90px;
+      background: none;
+      border: none;
+      width: 150px;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      height: 120px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: var(--ion-font-family);
+    }
+
+    .scoreAway {
+      border-left: 5px solid var(--igr-rowBorder);
+    }
+  }
+}

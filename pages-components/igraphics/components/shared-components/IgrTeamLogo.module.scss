@@ -1,0 +1,38 @@
+.teamLogo {
+  display: block;
+  cursor: pointer;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.logoTd {
+  width: 50px;
+  min-width: 50px;
+  text-align: center;
+  padding-left: 10px;
+  img {
+    height: 40px;
+    width: 40px;
+  }
+  svg {
+    height: 30px;
+    width: 30px;
+    margin: 0 auto;
+  }
+}
+.nameTd {
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.tableWrapper {
+  height: 300px;
+  overflow-y: auto;
+}

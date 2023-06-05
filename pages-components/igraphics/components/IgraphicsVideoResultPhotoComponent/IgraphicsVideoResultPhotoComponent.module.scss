@@ -1,0 +1,144 @@
+.tableWrapper {
+  width: 4000px;
+  height: 4000px;
+  position: relative;
+  padding: 150px 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: flex-end;
+
+  .background {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 2;
+  }
+
+  .photo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    & > div {
+      background: none !important;
+      border: none !important;
+      & > button {
+        position: absolute;
+        top: 17px;
+        left: 10px;
+        z-index: 100;
+        padding: 0px 10px;
+        width: 200px;
+        height: 200px;
+
+        svg {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+
+  .content {
+    width: 85%;
+    margin: 0 auto;
+    z-index: 5;
+    position: relative;
+
+    input {
+      font-family: var(--ion-font-family);
+    }
+
+    .head {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 2;
+      height: 320px;
+      border-radius: 25px 100px 25px 25px;
+      padding: 0 50px;
+      position: relative;
+      .team {
+        min-width: 1000px;
+        flex: 1;
+        height: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 50px;
+        gap: 40px;
+        .inputTeamName {
+          color: var(--igr-subTitleFont);
+          font-size: 85px;
+          margin: 0;
+          width: 100%;
+          text-align: start;
+          font-family: var(--header-font-family);
+          white-space: pre-wrap;
+        }
+        .teamLogo {
+          overflow: visible !important;
+        }
+
+        &.home {
+          border-radius: 15px 0 0 15px;
+        }
+        &.away {
+          border-radius: 0 15px 15px 0;
+          .inputTeamName {
+            text-align: end;
+          }
+        }
+      }
+
+      .score {
+        height: 100%;
+        width: 650px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        font-size: 120px;
+        color: #fff;
+        border-radius: 0 130px 0 0;
+        background: #0481fe;
+
+        input {
+          color: #fff;
+          height: 100%;
+          width: 500px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 220px;
+        }
+      }
+    }
+  }
+}
+
+.body {
+  width: 100%;
+  margin-top: -15px;
+  z-index: 0;
+  border-radius: 0 0 15px 15px;
+  overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  .bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 50px;
+    margin-top: 100px;
+  }
+}

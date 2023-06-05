@@ -1,0 +1,79 @@
+.container {
+  svg {
+    z-index: 1;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 220px;
+    padding: 0 50px;
+
+    input {
+      font-family: var(--ion-font-family);
+      font-weight: 500;
+    }
+
+    .team {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      &.home {
+        .teamLogo {
+          margin-left: 0;
+          margin-right: 20px;
+        }
+      }
+      &.away {
+        .inputName {
+          text-align: end;
+        }
+      }
+
+      .inputName {
+        font-size: 60px;
+        color: var(--ion-color-light);
+        position: relative;
+        z-index: 5;
+        width: 433px;
+        font-weight: 500;
+      }
+
+      .teamLogo {
+        width: 100px;
+        margin-left: 20px;
+      }
+    }
+    .score {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      text-align: center;
+      flex: 1;
+      font-size: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      width: fit-content;
+
+      input {
+        font-size: 70px;
+        height: 100%;
+        width: 300px;
+        text-align: center;
+        color: var(--ion-color-light);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

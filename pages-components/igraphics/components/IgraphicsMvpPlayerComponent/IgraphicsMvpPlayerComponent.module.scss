@@ -1,0 +1,183 @@
+.tableWrapper {
+  width: 4000px;
+  height: 4000px;
+  position: relative;
+  padding: 150px;
+  overflow: hidden;
+
+  .playerPhoto {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+  }
+
+  .region {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 10;
+    margin-left: 150px;
+
+    .regionContent {
+      transform: scale(0.8);
+    }
+  }
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .content {
+    margin-top: 2300px;
+    margin-left: 150px;
+    position: relative;
+    z-index: 2;
+    input,
+    textarea {
+      background: none;
+      border: none;
+      outline: none;
+    }
+
+    .title {
+      width: fit-content;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      border-top-right-radius: 150px;
+      padding-left: 50px;
+      padding-top: 50px;
+
+      input {
+        font-family: var(--header-font-family);
+        text-transform: uppercase;
+        font-size: 220px;
+        color: var(--ion-color-light);
+      }
+    }
+
+    .info {
+      display: flex;
+      width: fit-content;
+      border-top-right-radius: 150px;
+      padding: 60px;
+      gap: 100px;
+      padding-right: 300px;
+      .teamLogo {
+        min-width: 380px;
+        height: 380px;
+        border-radius: 50%;
+      }
+      .name {
+        display: flex;
+        flex-direction: column;
+
+        .player,
+        .team {
+          input {
+            font-family: var(--ion-font-family);
+            font-weight: 800;
+          }
+        }
+        .team {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          .teamName {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .division {
+      .divisionContent {
+        .subtitle {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          width: fit-content;
+          margin-top: 50px;
+          height: 180px;
+          width: fit-content;
+          .row {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            width: fit-content;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            padding: 0 70px;
+
+            input {
+              font-family: var(--header-font-family) !important;
+              text-transform: uppercase;
+            }
+            .delimiter {
+              width: 20px;
+              height: 70px;
+              margin-top: 0px;
+              border-top-right-radius: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .photo {
+    position: absolute;
+    left: -1600px;
+    top: -200px;
+    width: 5000px;
+    height: 5000px;
+    z-index: 1;
+    .svg {
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+    .clipped {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 100% 100% !important;
+      -webkit-clip-path: url(#my-clip-path);
+      clip-path: url(#my-clip-path);
+
+      .player {
+        width: 100%;
+        height: 100%;
+      }
+
+      button {
+        z-index: 10000;
+        position: absolute;
+        top: 200px;
+        right: 3295px;
+        width: 200px;
+        height: 200px;
+        svg {
+          height: 100px;
+          width: 100px;
+        }
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}

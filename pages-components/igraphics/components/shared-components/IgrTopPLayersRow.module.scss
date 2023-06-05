@@ -1,0 +1,31 @@
+.player {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  padding: 0 50px;
+  width: 1800px;
+  &.big {
+    width: 100%;
+
+    .name {
+      font-size: 120px;
+    }
+  }
+
+  .name {
+    flex: 1;
+    color: #fff;
+    font-size: 90px;
+    font-family: var(--ion-font-family);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 30px;
+  }
+  .stats {
+    width: 300px;
+    color: #fff;
+    font-size: 120px;
+    text-align: center;
+    font-family: var(--header-font-family);
+  }
+}

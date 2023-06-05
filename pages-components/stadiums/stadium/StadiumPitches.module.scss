@@ -1,0 +1,10 @@
+.descriptionTd,
+.nameTd {
+  text-align: left;
+  font-size: var(--font-size-middle) !important;
+}
+
+.nameTd {
+  width: 90px;
+  min-width: 90px;
+}

@@ -1,0 +1,36 @@
+.background {
+  object-fit: cover;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+
+  .pattern {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .bigRight {
+    position: absolute;
+    bottom: -1800px;
+    right: -1600px;
+  }
+  .bottomRight {
+    bottom: -2000px;
+  }
+  .lightRight {
+    bottom: -2500px;
+    right: -2000px;
+  }
+  .lightLeft {
+    left: 0;
+    bottom: -2700px;
+  }
+  .bottom {
+    bottom: -2800px;
+  }
+}

@@ -1,0 +1,126 @@
+.tableWrapper {
+  width: 4000px;
+  height: 5000px;
+  position: relative;
+  padding: 150px;
+
+  display: flex;
+  flex-direction: column;
+
+  .region {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    justify-content: flex-end;
+
+    .regionContent {
+      transform: scale(0.8);
+    }
+  }
+
+  .title {
+    width: fit-content;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 150px;
+    padding-left: 50px;
+    padding-top: 50px;
+    margin-top: 50px;
+
+    input {
+      font-family: var(--header-font-family);
+      text-transform: uppercase;
+      font-size: 220px;
+      color: var(--ion-color-light);
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    input,
+    textarea {
+      background: none;
+      border: none;
+      outline: none;
+    }
+
+    .playerPhoto {
+      width: 2500px;
+      height: 2500px;
+      position: relative;
+      //background: #9e9e9e;
+      margin-left: -100px;
+      .borderIcon {
+        height: 2500px;
+        width: 2500px;
+        position: absolute;
+        top: 3px;
+        left: 2px;
+        z-index: 10;
+        pointer-events: none;
+      }
+      .photo {
+        clip-path: polygon(71% 3%, 80% 0%, 95% 37%, 101% 61%, 78% 84%, 50% 100%, 17% 79%, 0% 63%, 8% 30%, 20% 2%);
+        border-radius: 1050px;
+        overflow: hidden;
+        width: 2500px;
+        height: 2500px;
+        .loaderPhoto {
+          border: none !important;
+        }
+
+        button {
+          z-index: 10000;
+          position: absolute;
+          top: 124px;
+          right: 400px;
+          width: 200px;
+          height: 200px;
+          svg {
+            height: 100px;
+            width: 100px;
+          }
+        }
+      }
+    }
+    .info {
+      background: #fff;
+      display: flex;
+      width: 2500px;
+      border-top-right-radius: 150px;
+      padding: 60px;
+      gap: 100px;
+      margin-top: -100px;
+      z-index: 10;
+      .teamLogo {
+        min-width: 380px;
+        height: 380px;
+        background: #9e9e9e;
+        border-radius: 50%;
+      }
+      .name {
+        display: flex;
+        flex-direction: column;
+
+        input {
+          font-family: var(--ion-font-family);
+          font-size: 160px;
+          width: 1500px;
+        }
+
+        .player {
+          font-weight: 800;
+        }
+        .team {
+          font-size: 150px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

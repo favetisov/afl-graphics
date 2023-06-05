@@ -1,0 +1,25 @@
+.subtitle {
+  width: fit-content;
+  .row {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    width: fit-content;
+
+    input {
+      width: 200px;
+      font-family: var(--header-font-family) !important;
+      text-transform: uppercase;
+    }
+    .delimiter {
+      width: 20px;
+      height: 70px;
+      margin-top: 20px;
+      border-top-right-radius: 25px;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

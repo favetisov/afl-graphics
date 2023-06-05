@@ -1,0 +1,193 @@
+.tableWrapper {
+  width: 4500px;
+  aspect-ratio: 16/9;
+  position: relative;
+  padding: 150px;
+  overflow: hidden;
+
+  textarea {
+    font-family: var(--ion-font-family);
+    font-size: 70px;
+    overflow: visible;
+    line-height: 80px;
+    font-weight: 500;
+    min-height: 100px;
+    color: var(--textAreaColor);
+    border: none;
+    text-align: center;
+  }
+
+  .background {
+    svg {
+      bottom: -1000px !important;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .name {
+      margin-top: 50px;
+      input {
+        background: none;
+        border: none;
+        outline: none;
+        font-family: var(--header-font-family);
+        text-transform: uppercase;
+        font-size: 150px;
+        line-height: 200px;
+      }
+
+      .date,
+      .first,
+      .second {
+        padding-left: 50px;
+        padding-right: 100px;
+        width: fit-content;
+        width: fit-content;
+        height: 250px;
+      }
+
+      .date {
+        margin-top: -10px;
+        height: 200px;
+        border-bottom-right-radius: 100px;
+      }
+
+      .first {
+        border-top-right-radius: 100px;
+        margin-bottom: -10px;
+        input {
+          line-height: 270px;
+        }
+      }
+      .second {
+        padding-top: 20px;
+        border-bottom-right-radius: 100px;
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    input {
+      font-family: var(--ion-font-family);
+      font-weight: 600;
+      text-align: center;
+      background: none;
+      outline: none;
+      border: none;
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 900px;
+      width: fit-content;
+      position: relative;
+      z-index: 100;
+      border-radius: 50px 250px 50px 50px;
+      padding: 0 25px;
+
+      .team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .teamLogo {
+          width: 500px;
+          height: 500px;
+          border-radius: 50%;
+          background: #9e9e9e;
+        }
+
+        textarea {
+          margin-top: 30px;
+          font-size: 80px;
+          width: 760px;
+          text-align: center;
+          background: none;
+        }
+      }
+
+      .score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 1000px;
+
+        .date {
+          font-size: 55px;
+          text-transform: uppercase;
+        }
+
+        .time {
+          width: 800px;
+          height: 320px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-top-right-radius: 100px;
+          margin-top: 40px;
+          margin-bottom: 50px;
+
+          input {
+            width: 800px;
+            font-size: 200px;
+            font-weight: 700;
+          }
+        }
+
+        .stadium {
+          font-size: 55px;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .playerPhoto {
+    min-width: 3500px;
+    height: 3500px;
+    position: absolute;
+    right: -1100px;
+    bottom: -738px;
+    button {
+      z-index: 10000;
+      position: absolute;
+      top: 200px;
+      left: 600px;
+      width: 250px;
+      height: 250px;
+      svg {
+        height: 100px;
+        width: 100px;
+      }
+    }
+    .photo {
+      clip-path: polygon(17% 1%, 233% 6%, 100% 52%, 103% 59%, 91% 76%, 49% 102%, 7% 71%, -2% 58%, 5% 35%, 19% -1%);
+      border: none;
+      border-radius: 1117px 570px 579px 599px;
+      overflow: hidden;
+    }
+    .borderIcon {
+      height: 3500px;
+      width: 3500px;
+      position: absolute;
+      top: -25px;
+      left: -25px;
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+}

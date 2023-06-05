@@ -1,0 +1,118 @@
+.tableWrapper {
+  width: 4000px;
+  position: relative;
+  padding: 150px 0;
+
+  textarea {
+    font-family: var(--ion-font-family);
+    font-size: 120px;
+    overflow: visible;
+    line-height: 135px;
+    font-weight: 700;
+    min-height: 200px;
+    color: var(--textAreaColor);
+    border: none;
+    text-align: center;
+  }
+
+  .content {
+    input {
+      font-family: var(--ion-font-family);
+      font-weight: 600;
+      text-align: center;
+    }
+    .info {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      height: 1800px;
+      padding-top: 500px;
+      border-bottom: 20px solid;
+      .team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        .teamLogo {
+          width: 700px;
+          height: 700px;
+          border-radius: 50%;
+          background: #9e9e9e;
+        }
+        textarea {
+          font-size: 120px;
+          width: 1000px;
+          text-align: center;
+          background: none;
+        }
+      }
+      .score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
+
+        .date {
+          font-size: 70px;
+          text-transform: uppercase;
+        }
+        .time {
+          width: 900px;
+          height: 320px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-top-right-radius: 100px;
+          margin-top: 40px;
+          margin-bottom: 50px;
+          input {
+            width: 1000px;
+            font-size: 230px;
+            font-weight: 700;
+          }
+        }
+        .stadium {
+          font-size: 55px;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+      }
+    }
+    .lastGames {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 100px;
+      margin-bottom: 250px;
+
+      .home,
+      .away {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 30px;
+        .formIndicatorRoot {
+          width: 80px !important;
+        }
+        .formIndicator {
+          width: 110px;
+          //clip-path: polygon(10px 0%, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+          overflow: hidden;
+          border-radius: 10px 50px 10px 10px;
+          div[class*='mantine-ColorSwatch-root'] {
+            height: 120px;
+            min-width: 120px;
+            border-radius: 0;
+          }
+          input {
+            opacity: 0;
+            height: 80px;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

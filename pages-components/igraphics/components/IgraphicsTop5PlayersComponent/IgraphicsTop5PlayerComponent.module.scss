@@ -1,0 +1,79 @@
+.player {
+  width: calc(100% - 150px);
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin-left: 150px;
+  margin-top: 100px;
+  input {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-family: var(--ion-font-family);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 30px;
+    .playerName {
+      font-size: 95px;
+      font-weight: 700;
+      text-align: left;
+      width: 2000px;
+      text-transform: uppercase;
+    }
+    .team {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .playerTeam {
+        font-size: 50px;
+        font-weight: 600;
+        padding: 0 20px;
+        text-align: left;
+        width: 600px;
+      }
+    }
+  }
+  .playerPhoto {
+    min-width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    margin-left: -160px;
+    position: relative;
+    transform: translateY(-5px);
+
+    .borderIcon {
+      height: 420px;
+      width: 420px;
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      z-index: 10;
+    }
+  }
+  .value {
+    text-align: center;
+    height: 70%;
+    font-family: var(--header-font-family);
+    border-left: 5px solid;
+    input {
+      height: 100%;
+      width: 400px;
+      font-size: 160px;
+      font-weight: 600;
+      text-align: center;
+      font-family: var(--header-font-family);
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

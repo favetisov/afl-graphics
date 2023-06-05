@@ -1,0 +1,33 @@
+.leagues {
+  table {
+    border-radius: 10px !important;
+    overflow: hidden;
+    box-shadow: 0 0 1px 1px var(--border-color-gray);
+  }
+}
+
+.table {
+  .narrowTd {
+    width: 30px;
+    text-align: center;
+  }
+  .typeTd {
+    width: 210px;
+    text-align: center;
+  }
+  .dateTd {
+    width: 120px;
+    text-align: center;
+  }
+  .photoTd {
+    width: 60px;
+    text-align: center;
+  }
+  .formatTd {
+    width: 60px;
+    text-align: center;
+  }
+  .tableRow {
+    cursor: pointer;
+  }
+}

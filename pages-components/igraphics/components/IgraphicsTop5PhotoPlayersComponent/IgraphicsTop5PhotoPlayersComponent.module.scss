@@ -1,0 +1,136 @@
+.tableWrapper {
+  width: 4000px;
+  height: 4000px;
+  position: relative;
+  padding: 150px;
+  overflow: hidden;
+
+  .playerPhoto {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+  }
+
+  .region {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 10;
+    margin-left: 150px;
+
+    .regionContent {
+      transform: scale(0.8);
+    }
+  }
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .photo {
+    position: absolute;
+    left: -1600px;
+    top: -200px;
+    width: 5000px;
+    height: 5000px;
+    z-index: 1;
+    .svg {
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+    .clipped {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 100% 100% !important;
+      -webkit-clip-path: url(#my-clip-path);
+      clip-path: url(#my-clip-path);
+      background-color: vaR(--ion-color-light);
+
+      .player {
+        width: 100%;
+        height: 100%;
+      }
+
+      button {
+        z-index: 10000;
+        position: absolute;
+        top: 200px;
+        right: 3200px;
+        width: 200px;
+        height: 200px;
+        svg {
+          height: 100px;
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  .content {
+    position: absolute;
+    z-index: 10;
+    width: 2170px;
+    bottom: 300px;
+    right: 200px;
+
+    .title {
+      height: fit-content;
+      input {
+        font-family: var(--header-font-family);
+        text-transform: uppercase;
+        color: var(--ion-color-light);
+        padding: 15px 50px;
+        padding-top: 35px;
+        padding-right: 120px;
+        border-top-right-radius: 100px;
+        width: 2000px !important;
+      }
+    }
+    .subtitle {
+      width: 100%;
+      padding: 25px 50px;
+      .row {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+        width: fit-content;
+
+        input {
+          width: 200px;
+          font-family: var(--header-font-family) !important;
+          text-transform: uppercase;
+        }
+        .delimiter {
+          width: 15px;
+          height: 50px;
+          margin-top: 20px;
+          border-top-right-radius: 25px;
+        }
+      }
+    }
+    .players {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 80px;
+      gap: 15px;
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,81 @@
+.photo {
+  min-width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  margin-left: -160px;
+  position: relative;
+  transform: translateY(-5px);
+
+  .borderIcon {
+    height: 420px;
+    width: 420px;
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    z-index: 10;
+  }
+}
+
+.photoWrapper {
+  position: relative;
+  .photoForm {
+    background: #fff;
+    opacity: 0.75;
+  }
+}
+
+.tableWrapper {
+  height: 400px;
+  overflow-y: auto;
+
+  th {
+    height: 40px;
+  }
+
+  .photoTd {
+    width: 50px;
+    min-width: 50px;
+    text-align: start;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      top: 1px;
+      border-radius: 39%;
+    }
+    .playerPhoto {
+      svg {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .nameTd {
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      p {
+        margin: 0;
+      }
+      .name {
+      }
+      .description {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        gap: 10px;
+
+        .teams {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+.playerPlate {
+  display: flex;
+  align-items: center;
+  border-top-right-radius: 70px;
+  height: 275px;
+  position: relative;
+  margin-left: 290px;
+
+  input {
+    font-family: var(--ion-font-family);
+  }
+
+  .borderForm {
+    position: absolute;
+    left: -138px;
+    top: -3px;
+    z-index: -1;
+
+    &.teamColor {
+      z-index: -2;
+      left: -160px;
+    }
+  }
+
+  .logoContainer {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    .teamLogo {
+    }
+  }
+  .names {
+    width: 1050px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .playerName {
+      font-size: 40px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      .inputNameFirst {
+        font-size: 80px;
+        background: none;
+        border: none;
+        width: 1000px;
+        text-align: start;
+        padding: 0;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .card {
+        width: 45px;
+        height: 65px;
+        border-radius: 15px;
+
+        &.yellow {
+          background: #ffc409;
+        }
+        &.red {
+          background: #ff0926;
+        }
+      }
+
+      small {
+        margin-left: 10px;
+      }
+    }
+    .teamName {
+      font-size: 45px;
+      font-weight: 600;
+    }
+  }
+}

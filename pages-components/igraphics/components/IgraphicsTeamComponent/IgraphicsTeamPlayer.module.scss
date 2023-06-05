@@ -1,0 +1,249 @@
+.player {
+  position: absolute;
+  height: 350px;
+  width: 350px;
+  //border: 10px dashed rgba(255, 255, 255, .2);
+  cursor: pointer;
+  margin-left: -285px;
+  z-index: 10;
+
+  .info {
+    & > div {
+      width: 550px;
+      padding-left: 70px;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    .infoContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &:hover {
+    //background: rgba(100, 100, 100, 0.1);
+    .move {
+      opacity: 1;
+    }
+  }
+  &[class*='grabbing'] {
+    cursor: grabbing;
+    .move {
+      border: 10px dashed gold;
+      background: rgba(255, 215, 0, 0.3);
+      .icon {
+        color: white;
+      }
+    }
+  }
+  &[class*='GK'] {
+    top: 2150px;
+    left: 50%;
+  }
+  &[class*='LB'] {
+    top: 1450px;
+    left: 25%;
+  }
+  &[class*='RB'] {
+    top: 1450px;
+    left: 75%;
+  }
+  &[class*='CB'] {
+    top: 1500px;
+    left: 50%;
+  }
+  &[class*='LM'] {
+    top: 700px;
+    left: 25%;
+  }
+  &[class*='CM'] {
+    top: 750px;
+    left: 50%;
+  }
+  &[class*='RM'] {
+    top: 700px;
+    left: 75%;
+  }
+  &[class*='CF'] {
+    top: 100px;
+    left: 50%;
+  }
+  .number {
+    display: none;
+  }
+
+  .move {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    //background: darkred;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border: 10px dashed rgba(255, 255, 255, 0.2);
+    background: #424242;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    .icon {
+      height: 70px;
+      width: 70px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  .nameWrapper {
+    display: flex;
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    align-items: center;
+  }
+
+  .logoWrapper {
+    display: block;
+    height: 100px;
+    width: 100px;
+    color: white;
+    position: absolute;
+    bottom: -170px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #9e9e9e;
+  }
+
+  .name {
+    //position: absolute;
+    //bottom: -230px;
+    //left: 50%;
+    //transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    border-radius: 15px 35px 15px 15px;
+    overflow: hidden;
+    z-index: 10;
+    .logo {
+      height: 150px;
+      width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nameInput {
+      height: 150px;
+      width: 600px;
+      background: transparent;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 65px;
+      border: none;
+      box-shadow: none;
+      outline: none;
+      font-weight: 600;
+    }
+  }
+
+  .numberinput {
+    position: absolute;
+    bottom: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100px;
+    width: 700px;
+    background: transparent;
+    text-align: center;
+    color: #c7c7c7;
+    font-size: 100px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    font-weight: 600;
+  }
+}
+.shirt {
+  cursor: pointer;
+  margin-left: -50px;
+
+  &.playerPhoto {
+    height: 460px;
+    width: 460px;
+    position: relative;
+    .borderIcon {
+      height: 470px;
+      width: 465px;
+      position: absolute;
+      top: -10px;
+      left: -3px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .photoForm {
+    }
+    .photo {
+      height: 460px;
+      width: 460px;
+      position: absolute;
+      top: 2px;
+      left: 0;
+      z-index: 1;
+      clip-path: polygon(50% 0%, 80% 0%, 96% 37%, 101% 59%, 88% 75%, 50% 99%, 11% 74%, 0% 61%, 6% 33%, 18% 2%);
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 36%;
+      border-bottom-left-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        &.user-icon {
+          width: 350px;
+          height: 350px;
+          display: flex;
+          text-align: center;
+          margin-left: 60px;
+          margin-top: 45px;
+        }
+      }
+    }
+  }
+
+  svg {
+    //background-clip: red;
+  }
+}
+
+.logoTableWrapper {
+  height: 300px;
+  overflow: auto;
+}
+
+.teamRow {
+  display: flex;
+  align-items: center;
+}
+.logoTd {
+  width: 50px;
+  min-width: 50px;
+  text-align: center;
+  vertical-align: center;
+  font-size: var(--font-size-middle) !important;
+  img {
+    height: 30px;
+    width: 30px;
+  }
+}
+.nameTd {
+  width: 100%;
+  text-align: left;
+  position: relative;
+  font-size: var(--font-size-middle) !important;
+}

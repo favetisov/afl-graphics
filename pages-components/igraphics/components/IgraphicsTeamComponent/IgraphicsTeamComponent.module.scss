@@ -1,0 +1,32 @@
+.tableWrapper {
+  width: 4000px;
+  overflow: hidden;
+  position: relative;
+  padding: 150px;
+
+  .fieldWrapper {
+    position: relative;
+    width: 3500px;
+    height: 3000px;
+    margin: 150px auto;
+    margin-top: 60px;
+    user-select: none;
+    z-index: 10;
+    .fieldBg {
+      position: absolute;
+      top: 4800px;
+      left: 4800px;
+      z-index: 1;
+      transform: scale(3.8);
+
+      path {
+        &:first-of-type {
+          fill: var(--field-background) !important;
+        }
+        &:last-of-type {
+          fill: var(--field-stroke) !important;
+        }
+      }
+    }
+  }
+}

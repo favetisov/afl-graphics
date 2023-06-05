@@ -1,0 +1,25 @@
+.teamsTd {
+  text-align: left;
+}
+.tournamentTd {
+  text-align: left;
+  width: 100%;
+  font-size: var(--font-size-middle) !important;
+}
+.dateTd {
+  text-align: center;
+  min-width: 120px;
+  font-size: var(--font-size-middle) !important;
+}
+.teams {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-middle) !important;
+  gap: 5px;
+  min-width: 180px;
+  .team {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}

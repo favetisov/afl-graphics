@@ -1,0 +1,73 @@
+{
+  "name": "AFL",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@9.6.6",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@mantine/core": "^5.2.6",
+    "@mantine/dates": "^5.2.6",
+    "@mantine/dropzone": "^5.2.6",
+    "@mantine/form": "^5.2.6",
+    "@mantine/hooks": "^5.2.6",
+    "@mantine/modals": "^5.2.6",
+    "@mantine/next": "^5.2.6",
+    "@mantine/notifications": "^5.2.6",
+    "@mantine/nprogress": "^5.2.6",
+    "@mantine/rte": "^5.2.6",
+    "@mantine/spotlight": "^5.2.6",
+    "@types/marked": "^4.0.7",
+    "@vercel/og": "^0.0.20",
+    "dayjs": "^1.11.5",
+    "dexie": "^3.2.2",
+    "file-saver": "^2.0.5",
+    "ftb-models": "^4.1.14",
+    "joi": "^17.6.0",
+    "jszip": "^3.10.1",
+    "jszip-utils": "^0.1.0",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "marked": "^4.1.1",
+    "mobx": "^6.6.2",
+    "mobx-react-lite": "^3.4.0",
+    "next": "12.2.5",
+    "node-html-markdown": "^1.2.0",
+    "react": "18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "18.2.0",
+    "react-input-autosize": "^3.0.0",
+    "react-zoom-pan-pinch": "^2.1.3",
+    "rxjs": "^7.5.7",
+    "sass": "^1.54.9",
+    "satori": "^0.0.43",
+    "swr": "^1.3.0",
+    "tabler-icons-react": "^1.54.0"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.3.1",
+    "@types/node": "18.7.15",
+    "@types/react": "18.0.18",
+    "@types/react-dom": "18.0.6",
+    "@types/react-input-autosize": "^2.2.1",
+    "eslint": "8.23.0",
+    "eslint-config-next": "12.2.5",
+    "prettier": "^2.7.1",
+    "typescript": "4.8.2"
+  },
+  "overrides": {
+    "react-input-autosize": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    },
+    "react-zoom-pan-pinch": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.dateInput {
+  text-align: center;
+  width: 95px;
+  z-index: 10000000;
+  input {
+    padding: 10px;
+  }
+}
+
+.timeInput {
+  text-align: center;
+  width: 55px;
+  padding: 0;
+  > div > div {
+    padding: 0;
+  }
+  input {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.postEditor {
+  font-size: 12px !important;
+}

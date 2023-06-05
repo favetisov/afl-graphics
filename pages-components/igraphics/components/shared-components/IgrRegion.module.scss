@@ -1,0 +1,15 @@
+.region {
+  display: flex;
+  align-items: flex-end;
+  .logo {
+    //transform: scale(5.5);
+  }
+  .input {
+    margin-left: 20px;
+  }
+  input {
+    font-family: var(--header-font-family) !important;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+}

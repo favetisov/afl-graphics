@@ -1,0 +1,65 @@
+.seasonName {
+  font-size: 12px;
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+  padding-bottom: 50px;
+}
+
+.multiSelect {
+  flex: 1;
+  max-width: 100% !important;
+}
+
+.colorGroup {
+  cursor: pointer;
+  display: flex;
+}
+
+.colorGroup:not(:last-of-type) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.colorCircle {
+  height: 16px;
+  width: 16px;
+  border-radius: 10px;
+  margin-right: 4px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.resultImg {
+  width: 100%;
+}
+
+.imgContainer {
+  transform-origin: left top;
+}
+
+.controlElement {
+}
+
+@media screen and (max-width: 600px) {
+  .controlElement {
+    width: 100%;
+  }
+}
+
+.test {
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  background: red;
+  height: 50px;
+  align-items: flex-start;
+  input {
+    font-family: 'Montserrat';
+    align-items: center;
+    background: lime;
+    width: 500px;
+    height: 50px;
+    min-height: 50px;
+    line-height: 50px;
+  }
+}
