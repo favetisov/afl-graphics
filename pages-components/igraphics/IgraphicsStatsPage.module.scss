@@ -1,3 +1,5 @@
+@import '../../public/fonts/stylesheet.css';
+
 .seasonName {
   font-size: 12px;
   text-decoration: underline;
@@ -62,4 +64,14 @@
     min-height: 50px;
     line-height: 50px;
   }
+}
+
+
+.chaika {
+  text-transform: uppercase !important;  
+  font-family: 'Druk Cyr';
+}
+.chaika input {
+    text-transform: uppercase !important;
+    font-family: 'Druk Cyr' !important;
 }

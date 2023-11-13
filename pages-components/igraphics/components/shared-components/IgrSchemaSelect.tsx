@@ -69,6 +69,12 @@ export const IgrSchemaSelect = ({
         <IgrLightRightIcon className={s.worldBottomRight} height={120} />
       </>
     ),
+    chaika: (
+      <img
+        src={`/igraphics/patterns-new/chaika.svg`}
+        className={s.background}
+      />
+    ),
   };
 
   return (
