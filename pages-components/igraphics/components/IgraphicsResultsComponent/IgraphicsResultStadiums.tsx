@@ -30,35 +30,21 @@ export const IgraphicsResultStadiums = ({
   const headFontColor = (() => {
     if (schema.value == "world-cup") {
       return schema.colors.rowHeadFont;
-    } else if (schema.value == "chaika") {
-      return schema.colors.rowHeadFont;
     } else {
       return schema.colors.rowFont;
     }
   })();
 
   const stadiumColor = (() => {
-    if (schema.value == "chaika") {
-      return schema.colors.rowHeadFont;
-    } else {
-      return schema.colors.bar;
-    }
+    return schema.colors.bar;
   })();
 
   const headBg = (() => {
-    if (schema.value == "chaika") {
-      return schema.colors.tableHeadBackground;
-    } else {
-      return schema.colors.rowEven;
-    }
+    return schema.colors.rowEven;
   })();
 
   const fontSize = (() => {
-    if (schema.value == "chaika") {
-      return 80;
-    } else {
-      return 60;
-    }
+    return 60;
   })();
 
   return (

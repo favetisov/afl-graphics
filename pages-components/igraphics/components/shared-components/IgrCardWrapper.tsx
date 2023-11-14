@@ -8,8 +8,10 @@ export const IgrCardWrapper = forwardRef(
       <div
         style={{
           background: schema.colors.cardWrapperBg,
-          paddingTop: pattern == "chaika" ? 300 : 150,
-          paddingBottom: pattern == "chaika" ? 300 : 150,
+          paddingTop: 150,
+          paddingBottom: 150,
+          marginTop: pattern == "chaika" ? 250 : 0,
+          marginBottom: pattern == "chaika" ? 300 : 0,
         }}
         className={s.card}
       >

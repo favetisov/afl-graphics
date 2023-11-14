@@ -1,16 +1,31 @@
-import { forwardRef, useEffect, useState } from 'react';
-import { IgrAflRegion } from '@/pages-components/igraphics/components/shared-components/IgrAflRegion';
-import { IgrBackground } from '../shared-components/IgrBackground';
-import s from './IgraphicsTop5PlayersComponent.module.scss';
-import { Season } from '@/shared/schema/src/models/season.model';
-import { League } from '@/shared/schema/src/models/league.model';
-import orderBy from 'lodash-es/orderBy';
-import { IgrSubtitle } from '@/pages-components/igraphics/components/shared-components/IgrSubtitle';
-import { IgrTitle } from '@/pages-components/igraphics/components/shared-components/IgrTitle';
-import { IgraphicsTop5PlayerComponent } from '@/pages-components/igraphics/components/IgraphicsTop5PlayersComponent/IgraphicsTop5PlayerComponent';
+import { forwardRef, useEffect, useState } from "react";
+import { IgrAflRegion } from "@/pages-components/igraphics/components/shared-components/IgrAflRegion";
+import { IgrBackground } from "../shared-components/IgrBackground";
+import s from "./IgraphicsTop5PlayersComponent.module.scss";
+import { Season } from "@/shared/schema/src/models/season.model";
+import { League } from "@/shared/schema/src/models/league.model";
+import orderBy from "lodash-es/orderBy";
+import { IgrSubtitle } from "@/pages-components/igraphics/components/shared-components/IgrSubtitle";
+import { IgrTitle } from "@/pages-components/igraphics/components/shared-components/IgrTitle";
+import { IgraphicsTop5PlayerComponent } from "@/pages-components/igraphics/components/IgraphicsTop5PlayersComponent/IgraphicsTop5PlayerComponent";
 
 export const IgraphicsTop5PlayersComponent = forwardRef(
-  ({ season, league, schema, pattern, category }: { season: Season; league: League; category?: 'goals' | 'assists' | 'goals_assists'; schema: any; pattern: string }, ref) => {
+  (
+    {
+      season,
+      league,
+      schema,
+      pattern,
+      category,
+    }: {
+      season: Season;
+      league: League;
+      category?: "goals" | "assists" | "goals_assists";
+      schema: any;
+      pattern: string;
+    },
+    ref
+  ) => {
     const [title, setTitle] = useState(`топ-5. Бомбардиры`);
     const [hiddenTitle, setHiddenTitle] = useState(false);
 
@@ -21,12 +36,12 @@ export const IgraphicsTop5PlayersComponent = forwardRef(
     season.calculate();
 
     useEffect(() => {
-      if (category == 'goals') {
-        setTitle('топ-5. Бомбардиры');
-      } else if (category == 'assists') {
-        setTitle('топ-5. Ассистенты');
-      } else if (category == 'goals_assists') {
-        setTitle('топ-5. Гол + пас');
+      if (category == "goals") {
+        setTitle("топ-5. Бомбардиры");
+      } else if (category == "assists") {
+        setTitle("топ-5. Ассистенты");
+      } else if (category == "goals_assists") {
+        setTitle("топ-5. Гол + пас");
       }
     }, [category]);
 
@@ -34,20 +49,49 @@ export const IgraphicsTop5PlayersComponent = forwardRef(
       return;
     }
 
-    let players = orderBy(Object.values(season.playersStats), [category], ['desc'])?.slice(0, 5);
+    let players = orderBy(
+      Object.values(season.playersStats),
+      [category],
+      ["desc"]
+    )?.slice(0, 5);
 
     return (
-      <div className={s.tableWrapper}>
+      <div
+        className={s.tableWrapper}
+        style={{
+          paddingTop: pattern == "chaika" ? 100 : 0,
+        }}
+      >
         <IgrBackground schema={schema} pattern={pattern} />
-        <IgrSubtitle light first={season.champ.name} second={season.name} schema={schema} key={'sub' + season._id} />
-        <IgrTitle light title={title} schema={schema} key={'stg' + season._id} />
-        <div className={s.region}>
-          <IgrAflRegion light league={league} schema={schema} />
-        </div>
+        <IgrSubtitle
+          light
+          first={season.champ.name}
+          second={season.name}
+          schema={schema}
+          key={"sub" + season._id}
+        />
+        <IgrTitle
+          light
+          title={title}
+          schema={schema}
+          key={"stg" + season._id}
+        />
+        {pattern != "chaika" && (
+          <div className={s.region}>
+            <IgrAflRegion light league={league} schema={schema} />
+          </div>
+        )}
 
         <div className={s.players}>
           {players.map((p, idx) => (
-            <IgraphicsTop5PlayerComponent big={idx == 0} key={p.player._id} playerStats={p} schema={schema} category={category} season={season} />
+            <IgraphicsTop5PlayerComponent
+              big={idx == 0}
+              key={p.player._id}
+              playerStats={p}
+              schema={schema}
+              category={category}
+              season={season}
+            />
           ))}
         </div>
 
@@ -60,5 +104,5 @@ export const IgraphicsTop5PlayersComponent = forwardRef(
         </div>
       </div>
     );
-  },
+  }
 );

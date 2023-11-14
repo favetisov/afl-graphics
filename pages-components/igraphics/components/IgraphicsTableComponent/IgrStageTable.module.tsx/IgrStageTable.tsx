@@ -14,10 +14,7 @@ export const IgrStageTable = ({ schema, stage }: any) => {
   return (
     <div className={s.tableWrapper + " " + (hidden ? s.hidden : "")}>
       <IgrElContainer onClose={() => setHidden(true)}>
-        <div
-          className={s.table}
-          style={{ fontSize: schema.value == "chaika" ? 90 : 60 }}
-        >
+        <div className={s.table} style={{ fontSize: 60 }}>
           <IgrStageTableHead schema={schema} stage={stage} />
           <div className={s.tbody}>
             {stage.table.map((row, idx) => (

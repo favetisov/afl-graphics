@@ -24,11 +24,7 @@ export const IgrGame = forwardRef(({ game, schema, idx, mode }: any, ref) => {
   );
 
   const fontSize = (() => {
-    if (schema.value == "chaika") {
-      return 85;
-    } else {
-      return 55;
-    }
+    return 55;
   })();
 
   const renderTime = () => {

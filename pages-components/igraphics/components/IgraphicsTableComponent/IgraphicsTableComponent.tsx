@@ -38,28 +38,24 @@ export const IgraphicsTableComponent = forwardRef(
             pattern={pattern}
             key={"bg" + season._id}
           />
-          {pattern != "chaika" && (
-            <IgrSubtitle
-              first={season.champ.name}
-              second={season.name}
-              schema={schema}
-              key={"sub" + season._id}
-            />
-          )}
+          <IgrSubtitle
+            first={season.champ.name}
+            second={season.name}
+            schema={schema}
+            key={"sub" + season._id}
+          />
           <IgrTitle
             title={"Таблица"}
             schema={schema}
             key={"ttl" + season._id}
           ></IgrTitle>
           {sortBy(season.stages.map(renderStage), ["sortIdx"])}
-          {pattern != "chaika" && (
-            <div className={s.region}>
-              <IgrAflRegion
-                league={season.champ.country.league}
-                schema={schema}
-              />
-            </div>
-          )}
+          <div className={s.region}>
+            <IgrAflRegion
+              league={season.champ.country.league}
+              schema={schema}
+            />
+          </div>
         </IgrCardWrapper>
       </div>
     );

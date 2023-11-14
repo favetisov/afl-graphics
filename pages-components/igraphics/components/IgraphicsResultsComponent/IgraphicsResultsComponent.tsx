@@ -10,7 +10,6 @@ import { userState } from "ftb-models";
 import { groupBy } from "lodash";
 import sortBy from "lodash/sortBy";
 import { forwardRef } from "react";
-
 require("dayjs/locale/ru");
 
 export const IgraphicsResultsComponent = forwardRef(
@@ -37,21 +36,25 @@ export const IgraphicsResultsComponent = forwardRef(
     );
 
     return (
-      <div className={s.tableWrapper}>
+      <div
+        className={s.tableWrapper}
+        style={{
+          paddingTop: pattern == "chaika" ? 300 : 0,
+          paddingBottom: pattern == "chaika" ? 350 : 0,
+        }}
+      >
         <IgrCardWrapper schema={schema}>
           <IgrBackground
             schema={schema}
             pattern={pattern}
             key={"bg" + season._id}
           />
-          {pattern != "chaika" && (
-            <IgrSubtitle
-              first={season.champ.name}
-              second={season.name}
-              schema={schema}
-              key={"sub" + season._id}
-            />
-          )}
+          <IgrSubtitle
+            first={season.champ.name}
+            second={season.name}
+            schema={schema}
+            key={"sub" + season._id}
+          />
           <IgrTitle
             title={mode == "results" ? "результаты" : "расписание"}
             schema={schema}
@@ -69,12 +72,7 @@ export const IgraphicsResultsComponent = forwardRef(
               )
             )}
           </div>
-          {pattern != "chaika" && (
-            <IgrAflRegion
-              league={season.champ.country.league}
-              schema={schema}
-            />
-          )}
+          <IgrAflRegion league={season.champ.country.league} schema={schema} />
         </IgrCardWrapper>
       </div>
     );

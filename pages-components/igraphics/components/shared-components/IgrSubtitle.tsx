@@ -40,7 +40,7 @@ export const IgrSubtitle = forwardRef(
               }}
               value={firstValue}
               inputStyle={{
-                fontSize: schema.value == "chaika" ? 200 : 100,
+                fontSize: 100,
                 color: color,
               }}
             />

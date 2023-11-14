@@ -4,6 +4,14 @@ import { IgrWorldBackground } from "@public/igraphics/patterns/worldcup-backgrou
 import { IgrWorldTopLeft } from "@public/igraphics/patterns/igr-world-top-left";
 import { IgrWorldTopRight } from "@public/igraphics/patterns/igr-world-top-right";
 import { IgrWorldBottomLeft } from "@public/igraphics/patterns/igr-world-bottom-left";
+import { ChaikaLogo } from "@/public/igraphics/patterns/chaika-logo";
+import { ChaikaRt } from "@/public/igraphics/patterns/chaika-rt";
+import { CHaikaRb } from "@/public/igraphics/patterns/chaika-rb";
+import { ChaikaLb } from "@/public/igraphics/patterns/chaika-lb";
+import { ChaikaLt } from "@/public/igraphics/patterns/chaika-lt";
+import { ChaikaLcb } from "@/public/igraphics/patterns/chaika-lcb";
+import { ChaikaRm } from "@/public/igraphics/patterns/chaika-rm";
+import { ChaikaBg } from "@/public/igraphics/patterns/chaika-bg";
 
 export const IgrBackground = forwardRef(
   ({ schema, pattern, width, className }: any, ref) => {
@@ -226,85 +234,66 @@ export const IgrBackground = forwardRef(
 
         {pattern == "chaika" && (
           <div className={s.pattern + " " + s.chaika}>
-            <img
-              style={{ height: "100%", width: "100%", objectFit: "cover" }}
-              src="/igraphics/patterns/chaikabg.jpg"
+            <ChaikaBg />
+
+            <ChaikaLb
+              height={800}
+              style={{ position: "absolute", bottom: 0, left: 0, zIndex: 10 }}
             />
-            <img
-              src="/igraphics/patterns/chaika-lb.png"
+            <CHaikaRb
+              height={4150}
               style={{
                 position: "absolute",
-                bottom: 0,
-                left: 0,
+                bottom: -1850,
+                right: 20,
                 zIndex: 10,
-                height: 800,
               }}
             />
-
-            <img
-              src="/igraphics/patterns/chaika-rb.png"
-              style={{
-                position: "absolute",
-                bottom: 0,
-                right: 0,
-                zIndex: 10,
-                height: 450,
-              }}
-            />
-
-            <img
-              src="/igraphics/patterns/chaika-rt.png"
+            <ChaikaRt
+              height={650}
               style={{
                 position: "absolute",
                 top: 0,
                 right: 0,
                 zIndex: 10,
-                height: 650,
               }}
             />
-
-            <img
-              src="/igraphics/patterns/chaika-lt.png"
+            <ChaikaLt
+              height={800}
               style={{
                 position: "absolute",
                 top: 0,
                 left: 0,
                 zIndex: 10,
-                height: 800,
               }}
             />
-
-            <img
-              src="/igraphics/patterns/chaika-rm.png"
+            <ChaikaLcb
+              height={400}
               style={{
                 position: "absolute",
-                bottom: 330,
-                right: 0,
-                zIndex: 10,
-                height: 600,
-              }}
-            />
-
-            <img
-              src="/igraphics/patterns/chaika-lcb.png"
-              style={{
-                position: "absolute",
-                bottom: -50,
+                bottom: 0,
                 left: 700,
                 zIndex: 10,
-                height: 400,
               }}
             />
 
-            <img
-              src="/igraphics/patterns/chaika-logo.png"
+            <ChaikaRm
+              height={600}
+              style={{
+                position: "absolute",
+                bottom: 530,
+                right: 0,
+                zIndex: 10,
+              }}
+            />
+            <ChaikaLogo
+              height={240}
               style={{
                 position: "absolute",
                 bottom: 50,
                 left: "50%",
                 transform: "translateX(-50%)",
                 zIndex: 10,
-                height: 300,
               }}
             />
           </div>
