@@ -77,8 +77,8 @@ export const IgraphicsPlayersComponent = forwardRef(
       <div
         className={s.tableWrapper}
         style={{
-          paddingTop: pattern == "chaika" ? 250 : 0,
-          paddingBottom: pattern == "chaika" ? 350 : 0,
+          paddingTop: pattern == "chaika" ? 250 : 150,
+          paddingBottom: pattern == "chaika" ? 350 : 150,
         }}
       >
         <IgrBackground
