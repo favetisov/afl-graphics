@@ -51,8 +51,8 @@ export const IgraphicsCoverComponent = forwardRef(
       <div
         className={s.tableWrapper}
         style={{
-          paddingTop: pattern == "chaika" ? 300 : 0,
-          paddingBottom: pattern == "chaika" ? 350 : 0,
+          paddingTop: pattern == "chaika" ? 300 : 150,
+          paddingBottom: pattern == "chaika" ? 350 : 150,
         }}
       >
         <IgrCardWrapper schema={schema}>

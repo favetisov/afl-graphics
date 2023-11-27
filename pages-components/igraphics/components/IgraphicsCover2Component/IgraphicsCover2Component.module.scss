@@ -18,7 +18,7 @@
   }
 
   .background {
-    svg {
+    svg:not(svg[class^="chaika"]) {
       bottom: -1300px !important;
     }
   }

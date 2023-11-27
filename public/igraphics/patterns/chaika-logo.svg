@@ -11,6 +11,7 @@
    sodipodi:docname="chaika-logo.svg"
    width="472.04276"
    height="240.5"
+   className={'chaika'}
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -42,16 +43,16 @@
 <style
    type="text/css"
    id="style2">
-	.st4{clip-path:url(#SVGID_8_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st5{clip-path:url(#SVGID_10_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st6{clip-path:url(#SVGID_12_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st7{clip-path:url(#SVGID_14_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st8{clip-path:url(#SVGID_16_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st9{clip-path:url(#SVGID_18_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st10{clip-path:url(#SVGID_20_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st11{clip-path:url(#SVGID_22_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st12{clip-path:url(#SVGID_24_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st13{clip-path:url(#SVGID_26_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st4{clipPath:url(#SVGID_8_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st5{clipPath:url(#SVGID_10_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st6{clipPath:url(#SVGID_12_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st7{clipPath:url(#SVGID_14_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st8{clipPath:url(#SVGID_16_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st9{clipPath:url(#SVGID_18_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st10{clipPath:url(#SVGID_20_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st11{clipPath:url(#SVGID_22_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st12{clipPath:url(#SVGID_24_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st13{clipPath:url(#SVGID_26_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
 </style>
 <g
    id="g134"
@@ -80,7 +81,7 @@
 		</clipPath>
 		<g
    class="st0"
-   clip-path="url(#SVGID_2_)"
+   clipPath="url(#SVGID_2_)"
    id="g10">
 		</g>
 	</g>
@@ -109,7 +110,7 @@
 		<g
    id="Слой_x0020_1"
    class="st1"
-   clip-path="url(#SVGID_4_)">
+   clipPath="url(#SVGID_4_)">
 			<path
    id="AFL2.cdr"
    class="st2"
@@ -141,7 +142,7 @@
 		<polygon
    class="st3"
    points="600.7,290.4 773.8,290.4 384.2,398.6 557.3,290.4 384.2,182.2 654,257.1 "
-   clip-path="url(#SVGID_6_)"
+   clipPath="url(#SVGID_6_)"
    id="polygon30" />
 	</g>
 	<g
@@ -172,7 +173,7 @@
    y1="209.2"
    x2="473.20001"
    y2="245.3"
-   clip-path="url(#SVGID_8_)"
+   clipPath="url(#SVGID_8_)"
    id="line40" />
 	</g>
 	<g
@@ -203,7 +204,7 @@
    y1="217.8"
    x2="587.09998"
    y2="277.10001"
-   clip-path="url(#SVGID_10_)"
+   clipPath="url(#SVGID_10_)"
    id="line50" />
 	</g>
 	<g
@@ -234,7 +235,7 @@
    y1="229"
    x2="587.09998"
    y2="277.10001"
-   clip-path="url(#SVGID_12_)"
+   clipPath="url(#SVGID_12_)"
    id="line60" />
 	</g>
 	<g
@@ -265,7 +266,7 @@
    y1="334.5"
    x2="564.70001"
    y2="334.5"
-   clip-path="url(#SVGID_14_)"
+   clipPath="url(#SVGID_14_)"
    id="line70" />
 	</g>
 	<g
@@ -296,7 +297,7 @@
    y1="335"
    x2="573.5"
    y2="351.79999"
-   clip-path="url(#SVGID_16_)"
+   clipPath="url(#SVGID_16_)"
    id="line80" />
 	</g>
 	<g
@@ -327,7 +328,7 @@
    y1="377"
    x2="480.10001"
    y2="332.5"
-   clip-path="url(#SVGID_18_)"
+   clipPath="url(#SVGID_18_)"
    id="line90" />
 	</g>
 	<g
@@ -358,7 +359,7 @@
    y1="377.79999"
    x2="460.89999"
    y2="377.60001"
-   clip-path="url(#SVGID_20_)"
+   clipPath="url(#SVGID_20_)"
    id="line100" />
 	</g>
 	<g
@@ -389,7 +390,7 @@
    y1="288.39999"
    x2="631.90002"
    y2="334.39999"
-   clip-path="url(#SVGID_22_)"
+   clipPath="url(#SVGID_22_)"
    id="line110" />
 	</g>
 	<g
@@ -420,7 +421,7 @@
    y1="247.7"
    x2="476.20001"
    y2="247.7"
-   clip-path="url(#SVGID_24_)"
+   clipPath="url(#SVGID_24_)"
    id="line120" />
 	</g>
 	<g
@@ -451,7 +452,7 @@
    y1="290"
    x2="520.09998"
    y2="247.7"
-   clip-path="url(#SVGID_26_)"
+   clipPath="url(#SVGID_26_)"
    id="line130" />
 	</g>
 </g>

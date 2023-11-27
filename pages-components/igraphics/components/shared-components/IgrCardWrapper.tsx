@@ -10,8 +10,8 @@ export const IgrCardWrapper = forwardRef(
           background: schema.colors.cardWrapperBg,
           paddingTop: 150,
           paddingBottom: 150,
-          marginTop: pattern == "chaika" ? 250 : 0,
-          marginBottom: pattern == "chaika" ? 300 : 0,
+          marginTop: pattern == "chaika" ? 250 : 150,
+          marginBottom: pattern == "chaika" ? 300 : 150,
         }}
         className={s.card}
       >
