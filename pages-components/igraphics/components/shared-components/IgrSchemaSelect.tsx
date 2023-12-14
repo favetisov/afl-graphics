@@ -75,6 +75,38 @@ export const IgrSchemaSelect = ({
         className={s.background}
       />
     ),
+    wc2023: (
+      <>
+        <img
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: 100,
+            opacity: 0.8,
+            objectFit: "cover",
+          }}
+          src="/igraphics/patterns/wc2023-bg.png"
+          alt=""
+        />
+        <img
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: 50,
+            objectFit: "cover",
+          }}
+          src="/igraphics/patterns/wc2023-lt.png"
+          alt=""
+        />
+        <img
+          src={`/igraphics/patterns-new/light-right.svg`}
+          style={{ width: 50, position: "absolute", bottom: -50, right: 0 }}
+          className={s.background}
+        />
+      </>
+    ),
   };
 
   return (

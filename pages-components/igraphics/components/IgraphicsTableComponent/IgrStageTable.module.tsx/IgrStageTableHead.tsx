@@ -11,7 +11,7 @@ export const IgrStageTableHead = forwardRef(({ schema, stage }: any, ref) => {
   const [form, setForm] = useState("Форма");
 
   const fontColor = (() => {
-    if (schema.value == "world-cup") {
+    if (schema.value == "world-cup" || schema.value == "wc2023") {
       return schema.colors.rowHeadFont;
     } else {
       return schema.colors.rowFont;

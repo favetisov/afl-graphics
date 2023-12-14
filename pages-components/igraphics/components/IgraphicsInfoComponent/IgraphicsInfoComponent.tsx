@@ -17,16 +17,21 @@ export const IgraphicsInfoComponent = forwardRef(
   }) => {
     const [value, setValue] = useState("Текст объявления");
 
+    const rowFont = (() => {
+      if (schema.value == "wc2023") {
+        return schema.colors.rowHeadFont;
+      } else {
+        return schema.colors.rowFont;
+      }
+    })();
+
     return (
       <div className={s.tableWrapper}>
         <IgrBackground schema={schema} pattern={pattern} />
         <div className={s.region}>
           <IgrAflRegion light league={league} schema={schema} />
         </div>
-        <div
-          className={s.textContainer}
-          style={{ color: schema.colors.titleFont }}
-        >
+        <div className={s.textContainer} style={{ color: rowFont }}>
           <Textarea
             classNames={{ input: s.textarea }}
             autosize

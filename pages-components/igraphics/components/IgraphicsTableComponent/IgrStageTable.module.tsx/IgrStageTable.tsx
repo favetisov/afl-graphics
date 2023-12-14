@@ -9,8 +9,6 @@ export const IgrStageTable = ({ schema, stage }: any) => {
   const [hidden, setHidden] = useState(false);
   if (!stage) return;
 
-  console.log(schema);
-
   return (
     <div className={s.tableWrapper + " " + (hidden ? s.hidden : "")}>
       <IgrElContainer onClose={() => setHidden(true)}>
@@ -22,6 +20,15 @@ export const IgrStageTable = ({ schema, stage }: any) => {
             ))}
           </div>
         </div>
+        {schema?.value == "wc2023" && (
+          <div
+            style={{
+              width: "100%",
+              borderBottom: "14px solid #ff9848",
+              marginTop: 14,
+            }}
+          ></div>
+        )}
       </IgrElContainer>
     </div>
   );

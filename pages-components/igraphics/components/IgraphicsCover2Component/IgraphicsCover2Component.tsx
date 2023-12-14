@@ -32,6 +32,14 @@ export const IgraphicsCover2Component = forwardRef(
         : "12:00"
     );
 
+    const rowFont = (() => {
+      if (schema.value == "wc2023") {
+        return schema.colors.rowHeadFont;
+      } else {
+        return schema.colors.rowFont;
+      }
+    })();
+
     return (
       <div
         className={s.tableWrapper}
@@ -93,10 +101,7 @@ export const IgraphicsCover2Component = forwardRef(
                   maxRows={3}
                   autosize
                   ref={(el) =>
-                    el?.style?.setProperty(
-                      "--textAreaColor",
-                      schema.colors.rowFont
-                    )
+                    el?.style?.setProperty("--textAreaColor", rowFont)
                   }
                   style={{ color: "red" }}
                   className={s.quoteText}
@@ -116,7 +121,7 @@ export const IgraphicsCover2Component = forwardRef(
                   />
                 </div>
                 <input
-                  style={{ color: schema.colors.rowFont }}
+                  style={{ color: rowFont }}
                   className={s.stadium}
                   onChange={(e) => setStadium(e.target.value)}
                   value={stadium}
@@ -128,10 +133,7 @@ export const IgraphicsCover2Component = forwardRef(
                   maxRows={3}
                   autosize
                   ref={(el) =>
-                    el?.style?.setProperty(
-                      "--textAreaColor",
-                      schema.colors.rowFont
-                    )
+                    el?.style?.setProperty("--textAreaColor", rowFont)
                   }
                   style={{ color: "red" }}
                   className={s.quoteText}

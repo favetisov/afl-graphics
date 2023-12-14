@@ -47,6 +47,14 @@ export const IgraphicsCoverComponent = forwardRef(
       }
     };
 
+    const rowFont = (() => {
+      if (schema.value == "wc2023") {
+        return schema.colors.rowHeadFont;
+      } else {
+        return schema.colors.rowFont;
+      }
+    })();
+
     return (
       <div
         className={s.tableWrapper}
@@ -80,10 +88,7 @@ export const IgraphicsCoverComponent = forwardRef(
                   maxRows={3}
                   autosize
                   ref={(el) =>
-                    el?.style?.setProperty(
-                      "--textAreaColor",
-                      schema.colors.rowFont
-                    )
+                    el?.style?.setProperty("--textAreaColor", rowFont)
                   }
                   style={{ color: "red" }}
                   className={s.quoteText}
@@ -93,7 +98,7 @@ export const IgraphicsCoverComponent = forwardRef(
               </div>
               <div className={s.score}>
                 <input
-                  style={{ color: schema.colors.rowFont }}
+                  style={{ color: rowFont }}
                   className={s.date}
                   onChange={(e) => setDate(e.target.value)}
                   value={date}
@@ -109,7 +114,7 @@ export const IgraphicsCoverComponent = forwardRef(
                   />
                 </div>
                 <input
-                  style={{ color: schema.colors.rowFont }}
+                  style={{ color: rowFont }}
                   className={s.stadium}
                   onChange={(e) => setStadium(e.target.value)}
                   value={stadium}
@@ -121,10 +126,7 @@ export const IgraphicsCoverComponent = forwardRef(
                   maxRows={3}
                   autosize
                   ref={(el) =>
-                    el?.style?.setProperty(
-                      "--textAreaColor",
-                      schema.colors.rowFont
-                    )
+                    el?.style?.setProperty("--textAreaColor", rowFont)
                   }
                   style={{ color: "red" }}
                   className={s.quoteText}

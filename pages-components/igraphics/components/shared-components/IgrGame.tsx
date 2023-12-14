@@ -2,7 +2,6 @@ import s from "./IgrGame.module.scss";
 import { IgrElContainer } from "@/pages-components/igraphics/components/shared-components/IgrElContainer";
 import { IgrTeamLogo } from "@/pages-components/igraphics/components/shared-components/IgrTeamLogo";
 import { forwardRef, useState } from "react";
-
 require("dayjs/locale/ru");
 
 const userState = { language: "ru" };
@@ -89,13 +88,32 @@ export const IgrGame = forwardRef(({ game, schema, idx, mode }: any, ref) => {
     console.log(game);
   }
 
-  const rowStyle =
-    schema.value == "world-cup"
-      ? {
-          background: schema.colors.rowEven,
-          padding: "15px 0",
-        }
-      : {};
+  const rowStyle = (() => {
+    if (schema.value == "world-cup") {
+      return {
+        background: "#071663",
+        padding: "15px 0",
+      };
+    } else if (schema.value == "wc2023") {
+      return {
+        background: schema.colors.rowEven,
+      };
+    } else {
+      return {};
+    }
+  })();
+
+  const scoreStyle = (() => {
+    if (schema.value == "wc2023") {
+      return {
+        background: schema.colors.titleBg,
+      };
+    } else {
+      return {
+        background: schema.colors.rowBg,
+      };
+    }
+  })();
 
   return (
     <div className={hidden ? s.hidden : null}>
@@ -111,7 +129,7 @@ export const IgrGame = forwardRef(({ game, schema, idx, mode }: any, ref) => {
               <IgrTeamLogo logo={game.home?.team?.logo} height={100} />
             </div>
           </div>
-          <div className={s.main} style={{ background: schema.colors.rowBg }}>
+          <div className={s.main} style={scoreStyle}>
             {mode == "results" ? renderScore() : renderTime()}
           </div>
           <div className={`${s.team} ${s.away}`}>

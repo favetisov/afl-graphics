@@ -28,6 +28,14 @@ export const IgraphicsMvpPlayerComponent = forwardRef(
       }, 100);
     }, []);
 
+    const rowFont = (() => {
+      if (schema.value == "wc2023") {
+        return schema.colors.rowHeadFont;
+      } else {
+        return schema.colors.rowFont;
+      }
+    })();
+
     return (
       <div className={s.tableWrapper}>
         <IgrBackground schema={schema} pattern={pattern} />
@@ -70,7 +78,7 @@ export const IgraphicsMvpPlayerComponent = forwardRef(
                 }}
                 value={playerName}
                 className={s.player}
-                inputStyle={{ fontSize: 160, color: schema.colors.rowFont }}
+                inputStyle={{ fontSize: 160, color: rowFont }}
               />
               <AutosizeInput
                 onChange={(e) => {
@@ -78,7 +86,7 @@ export const IgraphicsMvpPlayerComponent = forwardRef(
                 }}
                 value={teamName}
                 className={s.team}
-                inputStyle={{ fontSize: 160, color: schema.colors.rowFont }}
+                inputStyle={{ fontSize: 160, color: rowFont }}
               />
             </div>
           </div>

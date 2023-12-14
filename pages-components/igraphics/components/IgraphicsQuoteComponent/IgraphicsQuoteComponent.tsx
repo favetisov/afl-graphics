@@ -1,24 +1,35 @@
-import s from './IgraphicsQuoteComponent.module.scss';
-import { IgrAflRegion } from '@/pages-components/igraphics/components/shared-components/IgrAflRegion';
-import { IgrBackground } from '@/pages-components/igraphics/components/shared-components/IgrBackground';
-import { IgrTeamLogo } from '@/pages-components/igraphics/components/shared-components/IgrTeamLogo';
-import QuoteIcon from '@/public/icons/quote.svg';
-import BackgroundIcon from '@/public/igraphics/patterns/background-quote.svg';
-import { PhotoLoader } from '@/shared/shared-frontend/components/PhotoLoader/PhotoLoader';
-import { Textarea } from '@mantine/core';
-import BorderIcon from '@public/icons/border.svg';
-import { observer } from 'mobx-react-lite';
-import { forwardRef, useState } from 'react';
-import AutosizeInput from 'react-input-autosize';
+import s from "./IgraphicsQuoteComponent.module.scss";
+import { IgrAflRegion } from "@/pages-components/igraphics/components/shared-components/IgrAflRegion";
+import { IgrBackground } from "@/pages-components/igraphics/components/shared-components/IgrBackground";
+import { IgrTeamLogo } from "@/pages-components/igraphics/components/shared-components/IgrTeamLogo";
+import QuoteIcon from "@/public/icons/quote.svg";
+import BackgroundIcon from "@/public/igraphics/patterns/background-quote.svg";
+import { PhotoLoader } from "@/shared/shared-frontend/components/PhotoLoader/PhotoLoader";
+import { Textarea } from "@mantine/core";
+import BorderIcon from "@public/icons/border.svg";
+import { observer } from "mobx-react-lite";
+import { forwardRef, useState } from "react";
+import AutosizeInput from "react-input-autosize";
 
 export const IgraphicsQuoteComponent = observer(
   forwardRef(({ league, schema, mode, pattern }: any, ref) => {
-    const [firstName, setFirstName] = useState('Лео');
-    const [lastName, setLastName] = useState('Месси');
-    const [teamName, setTeamName] = useState('Barcelona');
-    const [quote, setQuote] = useState('Я просил помощи и понимания, но в ответ слышал только: «Нет, нет, нет»');
+    const [firstName, setFirstName] = useState("Лео");
+    const [lastName, setLastName] = useState("Месси");
+    const [teamName, setTeamName] = useState("Barcelona");
+    const [quote, setQuote] = useState(
+      "Я просил помощи и понимания, но в ответ слышал только: «Нет, нет, нет»"
+    );
 
-    const getWidthWord = (value: string) => (value.length > 10 ? (130 - value.length) * 1.18 : 150);
+    const getWidthWord = (value: string) =>
+      value.length > 10 ? (130 - value.length) * 1.18 : 150;
+
+    const rowFont = (() => {
+      if (schema.value == "wc2023") {
+        return schema.colors.rowHeadFont;
+      } else {
+        return schema.colors.rowFont;
+      }
+    })();
 
     return (
       <div className={s.tableWrapper}>
@@ -27,38 +38,84 @@ export const IgraphicsQuoteComponent = observer(
 
         <div className={s.content}>
           <div className={s.name}>
-            <div className={s.firstName} style={{ color: schema.colors.titleFontLight, background: schema.colors.titleBgLight }}>
-              <AutosizeInput onChange={e => setFirstName(e.target.value)} value={firstName} inputStyle={{ fontSize: 150, color: schema.colors.titleFontLight }} />
+            <div
+              className={s.firstName}
+              style={{
+                color: schema.colors.titleFontLight,
+                background: schema.colors.titleBgLight,
+              }}
+            >
+              <AutosizeInput
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+                inputStyle={{
+                  fontSize: 150,
+                  color: schema.colors.titleFontLight,
+                }}
+              />
             </div>
-            <div className={s.lastName} style={{ color: schema.colors.titleFontLight, background: schema.colors.titleBgLight }}>
-              <AutosizeInput onChange={e => setLastName(e.target.value)} value={lastName} inputStyle={{ fontSize: 150, color: schema.colors.titleFontLight }} />
+            <div
+              className={s.lastName}
+              style={{
+                color: schema.colors.titleFontLight,
+                background: schema.colors.titleBgLight,
+              }}
+            >
+              <AutosizeInput
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                inputStyle={{
+                  fontSize: 150,
+                  color: schema.colors.titleFontLight,
+                }}
+              />
             </div>
           </div>
-          <div style={{ background: schema.colors.cardWrapperBg }} className={s.team}>
+          <div
+            style={{ background: schema.colors.cardWrapperBg }}
+            className={s.team}
+          >
             <div className={s.logo}>
-              <IgrTeamLogo height={120} logo={'Barcelona'} />
+              <IgrTeamLogo height={120} logo={"Barcelona"} />
             </div>
             <AutosizeInput
-              onChange={e => setTeamName(e.target.value)}
-              style={{ color: schema.colors.rowFont }}
+              onChange={(e) => setTeamName(e.target.value)}
+              style={{ color: rowFont }}
               value={teamName}
-              inputStyle={{ fontSize: 60, color: schema.colors.rowFont }}
+              inputStyle={{ fontSize: 60, color: rowFont }}
             />
           </div>
-          <div style={{ background: schema.colors.cardWrapperBg, color: 'red' }} className={s.text}>
-            <QuoteIcon fill={schema.colors.titleBg} height={160} width={160} className={s.icon} />
+          <div
+            style={{ background: schema.colors.cardWrapperBg, color: "red" }}
+            className={s.text}
+          >
+            <QuoteIcon
+              fill={schema.colors.titleBg}
+              height={160}
+              width={160}
+              className={s.icon}
+            />
             <Textarea
               autosize
-              ref={el => el?.style?.setProperty('--textAreaColor', schema.colors.rowFont)}
-              style={{ color: 'red' }}
+              ref={(el) => el?.style?.setProperty("--textAreaColor", rowFont)}
+              style={{ color: "red" }}
               className={s.quoteText}
-              onChange={e => setQuote(e.target.value)}
+              onChange={(e) => setQuote(e.target.value)}
               value={quote}
             />
           </div>
           <div className={s.playerPhoto}>
-            <PhotoLoader className={s.photo} defaultUrl={'/igraphics/demo/messi.jpg'} onImg={() => {}} height={4000} width={4000} />
-            <BorderIcon style={{ fill: schema.colors.socialBar }} className={s.borderIcon} />
+            <PhotoLoader
+              className={s.photo}
+              defaultUrl={"/igraphics/demo/messi.jpg"}
+              onImg={() => {}}
+              height={4000}
+              width={4000}
+            />
+            <BorderIcon
+              style={{ fill: schema.colors.socialBar }}
+              className={s.borderIcon}
+            />
           </div>
           {/*<div className={s.photo}>*/}
           {/*  <svg className={s.svg}>*/}
@@ -73,5 +130,5 @@ export const IgraphicsQuoteComponent = observer(
         </div>
       </div>
     );
-  }),
+  })
 );

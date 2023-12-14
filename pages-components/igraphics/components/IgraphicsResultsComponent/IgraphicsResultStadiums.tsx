@@ -5,7 +5,6 @@ import { Game } from "@/shared/schema/src/models/game.model";
 import { userState } from "ftb-models";
 import sortBy from "lodash-es/sortBy";
 import { useState } from "react";
-import { Schema } from "tabler-icons-react";
 
 require("dayjs/locale/ru");
 
@@ -28,7 +27,7 @@ export const IgraphicsResultStadiums = ({
   );
 
   const headFontColor = (() => {
-    if (schema.value == "world-cup") {
+    if (schema.value == "world-cup" || schema.value == "wc2023") {
       return schema.colors.rowHeadFont;
     } else {
       return schema.colors.rowFont;
@@ -40,6 +39,9 @@ export const IgraphicsResultStadiums = ({
   })();
 
   const headBg = (() => {
+    if (schema.value == "wc2023") {
+      return "#071663";
+    }
     return schema.colors.rowEven;
   })();
 
