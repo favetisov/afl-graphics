@@ -380,30 +380,35 @@ export const IgraphicsStatsPage = () => {
         return;
       }
 
-      setCurrentStage(stages[0]);
+      if (!currentStage) {
+        setCurrentStage(stages[0]);
+      }
+
       currentStage?.calculate();
 
       return (
         <>
-          {/*{stages.length > 1 && (*/}
-          {/*  <>*/}
-          {/*    <Divider variant={'dashed'} my={'md'} />*/}
-          {/*    <Group>*/}
-          {/*      <Text size={'xs'}>Stage:</Text>*/}
-          {/*      <Select*/}
-          {/*        data={stages?.map(stage => ({*/}
-          {/*          value: stage._id,*/}
-          {/*          label: stage.name,*/}
-          {/*        }))}*/}
-          {/*        onChange={v => setCurrentStage(stages.find(l => l._id == v))}*/}
-          {/*        value={currentStage?._id}*/}
-          {/*        size={'xs'}*/}
-          {/*        mt={'xs'}*/}
-          {/*        placeholder={'stage'}*/}
-          {/*      />*/}
-          {/*    </Group>*/}
-          {/*  </>*/}
-          {/*)}*/}
+          {stages.length > 1 && (
+            <>
+              <Divider variant={"dashed"} my={"md"} />
+              <Group>
+                <Text size={"xs"}>Стадия:</Text>
+                <Select
+                  data={stages?.map((stage) => ({
+                    value: stage._id + "",
+                    label: stage.name,
+                  }))}
+                  onChange={(v) => {
+                    console.log(v);
+                    setCurrentStage(stages.find((l) => l._id + "" == v));
+                  }}
+                  value={currentStage?._id}
+                  size={"xs"}
+                  placeholder={"stage"}
+                />
+              </Group>
+            </>
+          )}
           <Divider variant={"dashed"} my={"md"} />
           <div ref={containerRef}>
             <div
