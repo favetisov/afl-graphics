@@ -33,7 +33,7 @@ export const IgraphicsCover2Component = forwardRef(
     );
 
     const rowFont = (() => {
-      if (schema.value == "wc2023") {
+      if (schema.value == "wc2023" || schema.value == "world-cup") {
         return schema.colors.rowHeadFont;
       } else {
         return schema.colors.rowFont;

@@ -41,14 +41,16 @@ export const IgrAflRegion = forwardRef(
 
     return (
       <div className={s.region}>
-        <AflLogo
-          fill={
-            light ? schema?.colors?.titleFont : schema?.colors?.subTitleFont
-          }
-          height={180}
-          width={230}
-          className={s.logo}
-        />
+        {league.name.startsWith("AFL") && (
+          <AflLogo
+            fill={
+              light ? schema?.colors?.titleFont : schema?.colors?.subTitleFont
+            }
+            height={180}
+            width={230}
+            className={s.logo}
+          />
+        )}
         <AutosizeInput
           className={s.input}
           onChange={(e) => {
