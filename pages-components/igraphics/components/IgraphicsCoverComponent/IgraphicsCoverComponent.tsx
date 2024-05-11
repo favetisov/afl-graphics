@@ -104,8 +104,8 @@ export const IgraphicsCoverComponent = forwardRef(
                   value={date}
                 />
                 <div
-                  style={{ backgroundColor: schema.colors.titleBg }}
-                  className={s.time}
+                  style={{ background: schema.colors.titleBg }}
+                  className={s.time + " " + "titlebg"}
                 >
                   <input
                     style={{ color: schema.colors.titleFont }}

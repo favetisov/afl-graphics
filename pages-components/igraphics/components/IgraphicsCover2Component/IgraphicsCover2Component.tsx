@@ -111,11 +111,13 @@ export const IgraphicsCover2Component = forwardRef(
               </div>
               <div className={s.score}>
                 <div
-                  style={{ backgroundColor: schema.colors.titleBg }}
-                  className={s.time}
+                  style={{ background: schema.colors.titleBg }}
+                  className={s.time + " " + "titlebg"}
                 >
                   <input
-                    style={{ color: schema.colors.titleFont }}
+                    style={{
+                      color: schema.colors.titleFont,
+                    }}
                     onChange={(e) => setTime(e.target.value)}
                     value={time}
                   />
