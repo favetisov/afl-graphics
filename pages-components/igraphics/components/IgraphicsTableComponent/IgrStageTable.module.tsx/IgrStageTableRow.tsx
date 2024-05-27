@@ -1,10 +1,9 @@
 import { forwardRef, useState } from "react";
 import { IgrElContainer } from "@/pages-components/igraphics/components/shared-components/IgrElContainer";
-
 import s from "./IgrStageTable.module.scss";
 import { IgrTeamLogo } from "@/pages-components/igraphics/components/shared-components/IgrTeamLogo";
-import { ColorInput } from "@mantine/core";
 import { Team } from "@/shared/schema/src/models/team.model";
+import sortBy from "lodash-es/sortBy";
 import { Game } from "@/shared/schema/src/models/game.model";
 
 export const IgrStageTableRow = forwardRef(({ row, idx, schema }: any, ref) => {
@@ -100,7 +99,7 @@ export const IgrStageTableRow = forwardRef(({ row, idx, schema }: any, ref) => {
           </div>
           <div className={`${s.td} ${s.form}`}>
             <div>
-              {row.games
+              {sortBy(row.games || [], [(g) => g.dt?.unix(), "tourNumber"])
                 .filter((g) => g.hasFinished())
                 .slice(-5)
                 .map((g) => (
