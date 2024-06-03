@@ -42,24 +42,24 @@ export const IgraphicsBirthdaysComponent = forwardRef(
         (playerStats: any) => {
           if (playerStats.player?.birthdayDate) {
             const bDay = dayjs(playerStats.player?.birthdayDate)
-              .set("year", 0)
+              .set("year", 2000)
               .unix();
-            playersByDate[bDay] ??= playerStats;
+            playersByDate[bDay] ??= [];
+            playersByDate[bDay].push(playerStats);
           }
         }
       );
     });
 
-    const players = sortBy(
-      Object.keys(playersByDate)
-        .filter(
-          (d) =>
-            d > fromDate.set("year", 0).unix() &&
-            d < toDate.set("year", 0).add(1, "d").unix()
-        )
-        .map((k) => playersByDate[k]),
-      [(p) => dayjs(p.player.birthdayDate).set("year", 0).unix()]
-    );
+    const players = [];
+    sortBy(
+      Object.keys(playersByDate).filter(
+        (d) =>
+          d >= fromDate.set("year", 2000).unix() &&
+          d < toDate.set("year", 2000).add(1, "d").unix()
+      ),
+      [(p) => p]
+    ).forEach((k) => players.push(...playersByDate[k]));
 
     return (
       <div
