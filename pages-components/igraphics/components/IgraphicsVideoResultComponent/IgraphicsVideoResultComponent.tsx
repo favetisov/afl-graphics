@@ -71,7 +71,6 @@ export const IgraphicsVideoResultComponent = forwardRef(
 
               {Boolean(game.home.score.pen || game.away.score.pen) && (
                 <>
-                  (пен:&nbsp;
                   <input
                     style={{
                       color: schema.colors.r,
@@ -81,7 +80,6 @@ export const IgraphicsVideoResultComponent = forwardRef(
                     onChange={(e) => setPenScore(e.target.value)}
                     value={penScore}
                   />
-                  )
                 </>
               )}
             </div>
