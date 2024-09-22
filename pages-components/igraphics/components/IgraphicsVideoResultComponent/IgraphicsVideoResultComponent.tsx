@@ -70,12 +70,19 @@ export const IgraphicsVideoResultComponent = forwardRef(
               />
 
               {Boolean(game.home.score.pen || game.away.score.pen) && (
-                <input
-                  style={{ color: schema.colors.r }}
-                  className={s.inputScorePen}
-                  onChange={(e) => setPenScore(e.target.value)}
-                  value={penScore}
-                />
+                <>
+                  (пен:&nbsp;
+                  <input
+                    style={{
+                      color: schema.colors.r,
+                      fontSize: "100px",
+                      marginTop: -72,
+                    }}
+                    onChange={(e) => setPenScore(e.target.value)}
+                    value={penScore}
+                  />
+                  )
+                </>
               )}
             </div>
             <div className={`${s.team} ${s.away}`}>
