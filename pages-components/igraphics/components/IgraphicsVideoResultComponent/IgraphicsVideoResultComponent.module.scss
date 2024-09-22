@@ -57,9 +57,10 @@
       .score {
         height: 100%;
         width: 650px;
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 
         gap: 15px;
         font-size: 120px;
@@ -80,15 +81,6 @@
   }
 }
 
-.inputScore {
-    color: #fff;
-    height: 140px;
-    margin-top: 20px; 
-    width: 500px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 140px;
-}
 
 .body {
   width: 100%;
