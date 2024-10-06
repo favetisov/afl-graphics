@@ -55,14 +55,26 @@
   }
 
   .scorePen {
-    font-size: 45px;
-    width: 50px !important;
-    transform: translate(-30px, -25px);
+    font-size: 50px;
+    height: 80px;  
+    width: 170px !important; 
+    // transform: translate(-30px, -25px);
+    // transform: translateY(-25px); 
     font-family: var(--header-font-family);
+    position: absolute;
+    top: 0; 
+    right: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end !important;
+    flex-direction: row !important; 
+    text-align: right !important;
+    padding-right: 10px;
   }
 
   .score {
-    min-width: 140px;
+    min-width: 180px !important; 
+    width: 180px !important; 
     height: 100%;
     display: flex;
     align-items: center;
@@ -70,7 +82,8 @@
     position: relative;
     input {
       font-family: var(--header-font-family);
-      width: 140px;
+      width: 180px !important;
+      min-width: 180px !important; 
       text-align: center;
     }
 
