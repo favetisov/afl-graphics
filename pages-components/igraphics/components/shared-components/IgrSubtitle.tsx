@@ -27,7 +27,7 @@ export const IgrSubtitle = forwardRef(
     let color = schema.colors.subTitleFont;
 
     if (light) {
-      color = "#fff";
+      color = schema.colors.titleFontLight;
     }
 
     return (
