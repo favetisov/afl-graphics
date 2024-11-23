@@ -11,6 +11,7 @@
 .cardWrapper {
   width: 1150px;
   margin: 100px 50px;
+  overflow: hidden; 
   input {
     font-size: 120px;
   }
@@ -122,9 +123,10 @@
     font-size: 65px;
     font-weight: 600;
     text-align: center;
-    min-width: 100px;
+    min-width: 150px;
     height: 70%;
     font-family: var(--header-font-family);
-    border-left: 5px solid;
+    padding-right: 50px;  
+    // border-left: 5px solid;
   }
 }
