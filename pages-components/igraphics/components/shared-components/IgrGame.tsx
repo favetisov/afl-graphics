@@ -84,10 +84,6 @@ export const IgrGame = forwardRef(({ game, schema, idx, mode }: any, ref) => {
     );
   };
 
-  if (game.home.score.pen || game.away.score.pen) {
-    console.log(game);
-  }
-
   const rowStyle = (() => {
     if (schema.value == "world-cup") {
       return {

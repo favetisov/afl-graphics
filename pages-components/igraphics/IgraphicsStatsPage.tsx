@@ -28,6 +28,7 @@ import { StageFormat } from "@/shared/schema/src/models/stage.model";
 import s from "./IgraphicsStatsPage.module.scss";
 import { IgraphicsTop5PlayersComponent } from "@/pages-components/igraphics/components/IgraphicsTop5PlayersComponent/IgraphicsTop5PlayersComponent";
 import { IgraphicsTop5PhotoPlayersComponent } from "@/pages-components/igraphics/components/IgraphicsTop5PhotoPlayersComponent/IgraphicsTop5PhotoPlayersComponent";
+import { sortBy, uniqBy } from "lodash";
 
 const components = [
   { value: "standings", label: "Standings" },
@@ -67,6 +68,7 @@ export const IgraphicsStatsPage = () => {
     "goals" | "assists" | "goals_assists"
   >("goals");
   const [seasonId, setSeasonId] = useState();
+  const [teamIdResults, setTeamIdResults] = useState("all");
 
   const [schema, setSchema] = useState();
   const [pattern, setPattern] = useState();
@@ -284,6 +286,27 @@ export const IgraphicsStatsPage = () => {
               onChange={(s) => setToDateResults(s)}
             />
           </Group>
+          <Divider variant={"dashed"} my={"md"} />
+          <Group>
+            <Text size={"xs"}>Team:</Text>{" "}
+            <Select
+              data={[
+                { value: "all", label: "all" },
+                ...uniqBy(sortBy(season.teams, ["team.name"]), "team._id").map(
+                  (t) => ({
+                    value: t.team._id,
+                    label: t.team.name,
+                  })
+                ),
+              ]}
+              size={"xs"}
+              value={teamIdResults}
+              onChange={(t) => {
+                setTeamIdResults(t);
+              }}
+            />
+          </Group>
+
           <Divider variant="dashed" my={"sm"} />
           <div ref={containerRef}>
             <div
@@ -301,6 +324,7 @@ export const IgraphicsStatsPage = () => {
                 fromDate={fromDateResults}
                 toDate={toDateResults}
                 mode={"results"}
+                teamId={teamIdResults}
               />
             </div>
           </div>
@@ -399,7 +423,6 @@ export const IgraphicsStatsPage = () => {
                     label: stage.name,
                   }))}
                   onChange={(v) => {
-                    console.log(v);
                     setCurrentStage(stages.find((l) => l._id + "" == v));
                   }}
                   value={currentStage?._id}
@@ -526,6 +549,7 @@ export const IgraphicsStatsPage = () => {
     toDateBirthdays,
     currentStage,
     category,
+    teamIdResults,
   ]);
 
   const renderContent = () => {

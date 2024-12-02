@@ -13,16 +13,23 @@ import { forwardRef } from "react";
 require("dayjs/locale/ru");
 
 export const IgraphicsResultsComponent = forwardRef(
-  ({ season, schema, pattern, fromDate, toDate, mode }: any, ref) => {
+  ({ season, schema, pattern, fromDate, toDate, mode, teamId }: any, ref) => {
     if (!season) return;
     if (!schema) return;
 
     fromDate = dayjs(fromDate);
     toDate = dayjs(toDate);
 
-    const games = season.games.filter(
-      (g) => g.dt > fromDate && g.dt < toDate.add(1, "d")
-    );
+    const games = season.games
+      .filter((g) => g.dt > fromDate && g.dt < toDate.add(1, "d"))
+      .filter((g) => {
+        console.log(teamId, g);
+        if (teamId !== "all") {
+          return g.home.team._id == teamId || g.away.team._id == teamId;
+        } else {
+          return true;
+        }
+      });
 
     const gamesByDate = groupBy(games, (g) =>
       g.dt.locale(userState.language).format("DD-MM-YYYY")

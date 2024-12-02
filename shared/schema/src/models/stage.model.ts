@@ -1,27 +1,27 @@
-import { Game } from './game.model';
-import { Season } from './season.model';
-import { StageEvent, StageEventType } from './stage-event.model';
-import { Team } from './team.model';
-import { League } from './league.model';
-import { Country } from './country.model';
-import { Champ } from './champ.model';
-import { orderBy } from 'lodash';
-import { Player } from './player.model';
-import { PlayerInStage } from './player-in-stage.model';
-import { AbstractModel } from './base/abstract.model';
-import { GameEventType } from './helper-models/game-event-type.model';
-import { GameSide } from './helper-models/game-side.model';
-import { TeamInStage } from './team-in-stage.model';
+import { Game } from "./game.model";
+import { Season } from "./season.model";
+import { StageEvent, StageEventType } from "./stage-event.model";
+import { Team } from "./team.model";
+import { League } from "./league.model";
+import { Country } from "./country.model";
+import { Champ } from "./champ.model";
+import { orderBy } from "lodash";
+import { Player } from "./player.model";
+import { PlayerInStage } from "./player-in-stage.model";
+import { AbstractModel } from "./base/abstract.model";
+import { GameEventType } from "./helper-models/game-event-type.model";
+import { GameSide } from "./helper-models/game-side.model";
+import { TeamInStage } from "./team-in-stage.model";
 
 export enum StageFormat {
-  'league' = 'league',
-  'free' = 'free',
-  'cup' = 'cup',
+  "league" = "league",
+  "free" = "free",
+  "cup" = "cup",
 }
 
 export enum StagePositionPriority {
-  'goals' = 'goals',
-  'games' = 'games',
+  "goals" = "goals",
+  "games" = "games",
 }
 
 export interface StageStats {
@@ -64,16 +64,16 @@ export class Stage extends AbstractModel {
   games: Game[] = [];
   playersApplications: PlayerInStage[] = [];
 
-  get cupNetFormat(): 'quadratic' | 'ternary' {
-    if (!this.cupNet || !this.cupNet.length) return 'quadratic';
-    if (this.cupNet.some(g => [8, 9, 10].includes(g.tourNumber))) {
-      if (this.cupNet.some(g => ![8, 9, 10, 0].includes(g.tourNumber))) {
-        throw new Error('cannot mix quadratic and ternary structures');
+  get cupNetFormat(): "quadratic" | "ternary" {
+    if (!this.cupNet || !this.cupNet.length) return "quadratic";
+    if (this.cupNet.some((g) => [8, 9, 10].includes(g.tourNumber))) {
+      if (this.cupNet.some((g) => ![8, 9, 10, 0].includes(g.tourNumber))) {
+        throw new Error("cannot mix quadratic and ternary structures");
       } else {
-        return 'ternary';
+        return "ternary";
       }
     } else {
-      return 'quadratic';
+      return "quadratic";
     }
   }
 
@@ -113,24 +113,25 @@ export class Stage extends AbstractModel {
       games: [],
     });
 
-    this.teams.forEach(tis => {
+    this.teams.forEach((tis) => {
       data.teamsStatsMap[tis.team._id] = defaultTeamStats(tis.team);
     });
 
     (this.games || [])
-      .filter(g => g.hasFinished())
-      .forEach(game => {
-        [game.home, game.away].forEach(side => {
+      .filter((g) => g.hasFinished())
+      .forEach((game) => {
+        [game.home, game.away].forEach((side) => {
           const t = side.team;
           data.teamsStatsMap[t._id] ??= defaultTeamStats(t);
           data.teamsStatsMap[t._id].games.push(game);
           data.teamsStatsMap[t._id].played++;
           data.teamsStatsMap[t._id].points += this.getTeamPoints(game, side);
 
-          side.players?.forEach(p => {
+          side.players?.forEach((p) => {
             data.playersStatsMap[p.player._id] ??= defaultPlayerStats(p.player);
             data.playersStatsMap[p.player._id].played++;
-            data.playersStatsMap[p.player._id].teamsMap[side.team._id] = side.team;
+            data.playersStatsMap[p.player._id].teamsMap[side.team._id] =
+              side.team;
           });
         });
 
@@ -151,21 +152,29 @@ export class Stage extends AbstractModel {
         data.teamsStatsMap[game.away.team._id].conceded += game.home.score.ft;
 
         game.events
-          .filter(e => e.team?._id)
-          .forEach(e => {
+          .filter((e) => e.team?._id)
+          .forEach((e) => {
             data.teamsStatsMap[e.team._id] ??= defaultTeamStats(e.team);
             if (e?.firstPlayer?._id) {
-              data.playersStatsMap[e.firstPlayer._id] ??= defaultPlayerStats(e.firstPlayer);
-              data.playersStatsMap[e.firstPlayer._id].teamsMap[e.team._id] = e.team;
+              data.playersStatsMap[e.firstPlayer._id] ??= defaultPlayerStats(
+                e.firstPlayer
+              );
+              data.playersStatsMap[e.firstPlayer._id].teamsMap[e.team._id] =
+                e.team;
             }
             if (e.secondPlayer?._id) {
-              data.playersStatsMap[e.secondPlayer._id] ??= defaultPlayerStats(e.secondPlayer);
-              data.playersStatsMap[e.secondPlayer._id].teamsMap[e.team._id] = e.team;
+              data.playersStatsMap[e.secondPlayer._id] ??= defaultPlayerStats(
+                e.secondPlayer
+              );
+              data.playersStatsMap[e.secondPlayer._id].teamsMap[e.team._id] =
+                e.team;
             }
 
             if (e.type == GameEventType.F_GOAL) {
-              if (e.firstPlayer?._id) data.playersStatsMap[e.firstPlayer._id].goals++;
-              if (e.secondPlayer?._id) data.playersStatsMap[e.secondPlayer._id].assists++;
+              if (e.firstPlayer?._id)
+                data.playersStatsMap[e.firstPlayer._id].goals++;
+              if (e.secondPlayer?._id)
+                data.playersStatsMap[e.secondPlayer._id].assists++;
 
               // data.teamsStatsMap[e.team._id].scored++;
               // if (e.team._id == game.home.team._id) {
@@ -174,32 +183,46 @@ export class Stage extends AbstractModel {
               //   data.teamsStatsMap[game.home.team._id].conceded++;
               // }
             } else if (e.type == GameEventType.F_YELLOW) {
-              if (e.firstPlayer?._id) data.playersStatsMap[e.firstPlayer._id].yellow++;
+              if (e.firstPlayer?._id)
+                data.playersStatsMap[e.firstPlayer._id].yellow++;
             } else if (e.type == GameEventType.F_SECOND_YELLOW) {
-              if (e.firstPlayer?._id) data.playersStatsMap[e.firstPlayer._id].yellow--;
-              if (e.firstPlayer?._id) data.playersStatsMap[e.firstPlayer._id].red++;
+              if (e.firstPlayer?._id)
+                data.playersStatsMap[e.firstPlayer._id].yellow--;
+              if (e.firstPlayer?._id)
+                data.playersStatsMap[e.firstPlayer._id].red++;
             } else if (e.type == GameEventType.F_RED) {
-              if (e.firstPlayer?._id) data.playersStatsMap[e.firstPlayer._id].red++;
+              if (e.firstPlayer?._id)
+                data.playersStatsMap[e.firstPlayer._id].red++;
             }
           });
       });
 
     this.calculated = data;
 
-    (this.events || []).forEach(e => {
+    (this.events || []).forEach((e) => {
       if (e.type == StageEventType.penalty) {
         data.teamsStatsMap[e.team._id].points -= e.points || 0;
       } else if (e.type == StageEventType.replace) {
         data.teamsStatsMap[e.toTeam._id] ??= defaultTeamStats(e.toTeam);
-        data.teamsStatsMap[e.toTeam._id].points += data.teamsStatsMap[e.team._id]?.points || 0;
-        data.teamsStatsMap[e.toTeam._id].won += data.teamsStatsMap[e.team._id]?.won || 0;
-        data.teamsStatsMap[e.toTeam._id].draw += data.teamsStatsMap[e.team._id]?.draw || 0;
-        data.teamsStatsMap[e.toTeam._id].lost += data.teamsStatsMap[e.team._id]?.lost || 0;
-        data.teamsStatsMap[e.toTeam._id].scored += data.teamsStatsMap[e.team._id]?.scored || 0;
-        data.teamsStatsMap[e.toTeam._id].conceded += data.teamsStatsMap[e.team._id]?.conceded || 0;
-        data.teamsStatsMap[e.toTeam._id].played += data.teamsStatsMap[e.team._id]?.played || 0;
+        data.teamsStatsMap[e.toTeam._id].points +=
+          data.teamsStatsMap[e.team._id]?.points || 0;
+        data.teamsStatsMap[e.toTeam._id].won +=
+          data.teamsStatsMap[e.team._id]?.won || 0;
+        data.teamsStatsMap[e.toTeam._id].draw +=
+          data.teamsStatsMap[e.team._id]?.draw || 0;
+        data.teamsStatsMap[e.toTeam._id].lost +=
+          data.teamsStatsMap[e.team._id]?.lost || 0;
+        data.teamsStatsMap[e.toTeam._id].scored +=
+          data.teamsStatsMap[e.team._id]?.scored || 0;
+        data.teamsStatsMap[e.toTeam._id].conceded +=
+          data.teamsStatsMap[e.team._id]?.conceded || 0;
+        data.teamsStatsMap[e.toTeam._id].played +=
+          data.teamsStatsMap[e.team._id]?.played || 0;
         delete data.teamsStatsMap[e.team._id];
-      } else if (e.type == StageEventType.disqual) {
+      } else if (
+        e.type == StageEventType.disqual &&
+        data.teamsStatsMap[e.team._id]
+      ) {
         data.teamsStatsMap[e.team._id].disqualified = true;
       }
     });
@@ -210,10 +233,15 @@ export class Stage extends AbstractModel {
       ts.localPoints = 0;
       ts.localScored = 0;
       ts.localConceded = 0;
-      const samePtsTeams = teams.filter((tm: any) => tm.team._id != ts.team._id && tm.points == ts.points);
+      const samePtsTeams = teams.filter(
+        (tm: any) => tm.team._id != ts.team._id && tm.points == ts.points
+      );
       samePtsTeams.forEach((tm: any) => {
         tm.games
-          .filter(g => g.home.team._id == ts.team._id || g.away.team._id == ts.team._id)
+          .filter(
+            (g) =>
+              g.home.team._id == ts.team._id || g.away.team._id == ts.team._id
+          )
           .forEach((g: any) => {
             const side = g.getTeamSide(ts.team);
             ts.localPoints += this.getTeamPoints(g, side);
@@ -223,13 +251,26 @@ export class Stage extends AbstractModel {
       });
     });
 
-    if (this.definePosition == 'goals') {
-      teams = orderBy(teams, ['points', t => t.scored - t.conceded, 'scored', 'w', 'name'], ['desc', 'desc', 'desc', 'desc', 'desc', 'desc', 'desc', 'asc']);
+    if (this.definePosition == "goals") {
+      teams = orderBy(
+        teams,
+        ["points", (t) => t.scored - t.conceded, "scored", "w", "name"],
+        ["desc", "desc", "desc", "desc", "desc", "desc", "desc", "asc"]
+      );
     } else {
       teams = orderBy(
         teams,
-        ['points', 'localPoints', t => t.localScored - t.localConceded, t => t.localScored, t => t.scored - t.conceded, 'scored', 'w', 'name'],
-        ['desc', 'desc', 'desc', 'desc', 'desc', 'desc', 'desc', 'asc'],
+        [
+          "points",
+          "localPoints",
+          (t) => t.localScored - t.localConceded,
+          (t) => t.localScored,
+          (t) => t.scored - t.conceded,
+          "scored",
+          "w",
+          "name",
+        ],
+        ["desc", "desc", "desc", "desc", "desc", "desc", "desc", "asc"]
       );
     }
 
