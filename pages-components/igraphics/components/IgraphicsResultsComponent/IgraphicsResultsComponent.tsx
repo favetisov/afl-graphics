@@ -23,8 +23,7 @@ export const IgraphicsResultsComponent = forwardRef(
     const games = season.games
       .filter((g) => g.dt > fromDate && g.dt < toDate.add(1, "d"))
       .filter((g) => {
-        console.log(teamId, g);
-        if (teamId !== "all") {
+        if (teamId && teamId !== "all") {
           return g.home.team._id == teamId || g.away.team._id == teamId;
         } else {
           return true;
