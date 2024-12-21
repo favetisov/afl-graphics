@@ -10,7 +10,10 @@ export const useModel = (entityName: string, itemId: number) => {
     setCurrentId(itemId);
     getModelManager().then((m) => {
       m.getModel(entityName, itemId).then((m) => {
-        console.log(m.games.find((g) => g._id + "" == "505767")?.date, "model");
+        console.log(
+          m?.games?.find((g) => g._id + "" == "505767")?.date,
+          "model"
+        );
         setItem(m);
       });
     });
