@@ -1,6 +1,4 @@
 import {
-  getLastUpdate,
-  getUpdatesSince,
   loadItem,
   loadList,
   newsPlain,
@@ -164,8 +162,7 @@ export class ModelManager {
 
   private async getUpdates() {
     const uiDb = getUiDb();
-    // const lastUpdate = await uiDb.get('manager_last_update');
-    const lastUpdate = { _id: null };
+    const lastUpdate = await uiDb.get("manager_last_update");
 
     const clearAllData = () => {
       for (const eName of Object.keys(schema)) {
@@ -174,21 +171,22 @@ export class ModelManager {
       }
     };
 
-    if (!lastUpdate?._id) {
-      clearAllData();
-      const lastUpdateId = await getLastUpdate();
-      await uiDb.put({ category: "manager_last_update", _id: lastUpdateId });
-    } else {
-      const { entities, lastUpdateId } = await getUpdatesSince(lastUpdate._id);
-      await uiDb.put({ category: "manager_last_update", _id: lastUpdateId });
-      if (entities["All"]?.length) {
-        clearAllData();
-      } else {
-        for (const eName in entities) {
-          entities[eName].forEach((_id) => delete this.data[eName][_id]);
-        }
-      }
-    }
+    // if (!lastUpdate?._id) {
+    //   clearAllData();
+    //   const lastUpdateId = await getLastUpdate();
+    //   await uiDb.put({ category: "manager_last_update", _id: lastUpdateId });
+    // } else {
+    //   const { entities, lastUpdateId } = await getUpdatesSince(lastUpdate._id);
+    //   await uiDb.put({ category: "manager_last_update", _id: lastUpdateId });
+    //   if (entities["All"]?.length) {
+    //     clearAllData();
+    //   } else {
+    //     for (const eName in entities) {
+    //       entities[eName].forEach((_id) => delete this.data[eName][_id]);
+    //     }
+    //   }
+    // }
+    clearAllData();
   }
 
   private async loadMissingEntities(entities: {
@@ -196,9 +194,10 @@ export class ModelManager {
   }) {
     const entitiesToLoad = {};
     for (const eName in entities) {
-      entitiesToLoad[eName] = entities[eName].filter(
-        (_id) => !this.data[eName][_id]?._id
-      );
+      // entitiesToLoad[eName] = entities[eName].filter(
+      //   (_id) => !this.data[eName][_id]?._id
+      // );
+      entitiesToLoad[eName] = entities[eName];
     }
 
     if (!Object.keys(entitiesToLoad).some((e) => entitiesToLoad[e].length))
