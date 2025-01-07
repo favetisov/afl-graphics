@@ -63,6 +63,8 @@ export class Stage extends AbstractModel {
   events: StageEvent[] = [];
   games: Game[] = [];
   playersApplications: PlayerInStage[] = [];
+  previousStage_id?: number;
+  previousStage?: Stage;
 
   get cupNetFormat(): "quadratic" | "ternary" {
     if (!this.cupNet || !this.cupNet.length) return "quadratic";
@@ -85,7 +87,9 @@ export class Stage extends AbstractModel {
   }
 
   calculate() {
-    const data = {
+    if (this.previousStage) this.previousStage.calculate();
+
+    const data = this.previousStage?.calculated || {
       playersStatsMap: {},
       teamsStatsMap: {},
     };
@@ -114,7 +118,7 @@ export class Stage extends AbstractModel {
     });
 
     this.teams.forEach((tis) => {
-      data.teamsStatsMap[tis.team._id] = defaultTeamStats(tis.team);
+      data.teamsStatsMap[tis.team._id] ??= defaultTeamStats(tis.team);
     });
 
     (this.games || [])
@@ -273,6 +277,11 @@ export class Stage extends AbstractModel {
         ["desc", "desc", "desc", "desc", "desc", "desc", "desc", "asc"]
       );
     }
+
+    teams = teams.filter(
+      (row: any) =>
+        row.team && this.teams.some((tis) => tis.team._id == row.team._id)
+    );
 
     teams.forEach((t: any, idx) => (t.position = idx + 1));
 

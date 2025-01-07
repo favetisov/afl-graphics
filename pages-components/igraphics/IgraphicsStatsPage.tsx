@@ -7,7 +7,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { IgraphicsTableComponent } from "./components/IgraphicsTableComponent/IgraphicsTableComponent";
 import { IgrSchemaSelect } from "./components/shared-components/IgrSchemaSelect";
 import { IgrSeasonSelect } from "./components/shared-components/IgrSeasonSelect";
@@ -73,6 +73,17 @@ export const IgraphicsStatsPage = () => {
   const [schema, setSchema] = useState();
   const [pattern, setPattern] = useState();
   const season: Season = useModel("Season", seasonId);
+  useEffect(() => {
+    season?.stages.forEach((s) => {
+      if (s.previousStage_id) {
+        s.previousStage = season.stages.find(
+          (st) => st._id + "" == s.previousStage_id + ""
+        );
+      }
+      s.calculate();
+    });
+  }, [season]);
+
   const containerRef = useRef();
 
   const exportAsImage = async (filename) => {

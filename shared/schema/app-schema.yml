@@ -70,7 +70,7 @@ Stage:
   code: 6
   tableName: stage
   fields:
-    list: [name, format, definePosition, show, sortIdx]
+    list: [name, format, definePosition, show, sortIdx, previousStage_id]
   joins:
     oneToOne:
       season: Season
@@ -118,8 +118,35 @@ Game:
   code: 9
   tableName: game
   fields:
-    list: [tourNumber, netPosition, techDefeat, stateCode, date, scoreFtHome, scoreFtAway, scorePenHome, scorePenAway, photoCover, timerRunning, ratingHomeBefore, ratingAwayBefore, ratingHomeAfter, ratingAwayAfter]
-    public: [homeLineupOptimality, awayLineupOptimality, timerLastValue, timerLastUpdateDate, shirtColorHome, shirtColorAway, formationHome, formationAway]
+    list:
+      [
+        tourNumber,
+        netPosition,
+        techDefeat,
+        stateCode,
+        date,
+        scoreFtHome,
+        scoreFtAway,
+        scorePenHome,
+        scorePenAway,
+        photoCover,
+        timerRunning,
+        ratingHomeBefore,
+        ratingAwayBefore,
+        ratingHomeAfter,
+        ratingAwayAfter,
+      ]
+    public:
+      [
+        homeLineupOptimality,
+        awayLineupOptimality,
+        timerLastValue,
+        timerLastUpdateDate,
+        shirtColorHome,
+        shirtColorAway,
+        formationHome,
+        formationAway,
+      ]
     admin: [manualScore]
   joins:
     oneToOne:
@@ -176,7 +203,15 @@ TransferRequest:
   code: 13
   tableName: transfer_request
   fields:
-    list: [state, type, createdTimestamp, capApprovedTimestamp, adminConfirmedTimestamp, declinedTimestamp]
+    list:
+      [
+        state,
+        type,
+        createdTimestamp,
+        capApprovedTimestamp,
+        adminConfirmedTimestamp,
+        declinedTimestamp,
+      ]
   joins:
     oneToOne:
       fromTeam: Team
@@ -218,8 +253,29 @@ Player:
   code: 16
   tableName: player
   fields:
-    list: [firstName, middleName, lastName, photoUrl, photoId, birthdayDate, position]
-    public: [leg, height, weight, socialVk, socialFb, socialPhone, gender, isProfessional, eias, nationality]
+    list:
+      [
+        firstName,
+        middleName,
+        lastName,
+        photoUrl,
+        photoId,
+        birthdayDate,
+        position,
+      ]
+    public:
+      [
+        leg,
+        height,
+        weight,
+        socialVk,
+        socialFb,
+        socialPhone,
+        gender,
+        isProfessional,
+        eias,
+        nationality,
+      ]
   joins:
     oneToOne:
       league: League
@@ -244,7 +300,7 @@ PlayerInTeam:
   code: 18
   tableName: player_in_team
   fields:
-    list: [ number ]
+    list: [number]
   joins:
     oneToOne:
       player: Player
@@ -254,7 +310,7 @@ PlayerInStage:
   code: 19
   tableName: player_in_stage
   fields:
-    list: [ number ]
+    list: [number]
   joins:
     oneToOne:
       player: Player
