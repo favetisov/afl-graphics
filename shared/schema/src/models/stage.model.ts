@@ -46,6 +46,8 @@ export interface StageStats {
       conceded: number;
       points: number;
       games: Game[];
+      played: number;
+      disqualified: boolean;
     };
   };
 }
