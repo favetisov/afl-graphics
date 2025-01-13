@@ -95,6 +95,7 @@ export class Stage extends AbstractModel {
       playersStatsMap: {},
       teamsStatsMap: {},
     };
+    data.playersStatsMap = {}; // стату по игрокам не суммируем!
 
     const defaultPlayerStats = (player: Player) => ({
       player,

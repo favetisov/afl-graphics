@@ -67,23 +67,14 @@ export class Season extends AbstractModel {
           games: 0,
           teamsMap: row.teamsMap,
         };
-        if (!stage.previousStage_id) {
-          stats[pId].goals += row.goals;
-          stats[pId].assists += row.assists;
-          stats[pId].goals_assists += row.assists + row.goals;
-          stats[pId].yellow += row.yellow;
-          stats[pId].red += row.red;
-          stats[pId].games += row.played;
-          stats[pId].teams = { ...stats[pId].teams, ...row.teamsMap };
-        } else {
-          stats[pId].goals = row.goals;
-          stats[pId].assists = row.assists;
-          stats[pId].goals_assists = row.assists + row.goals;
-          stats[pId].yellow = row.yellow;
-          stats[pId].red = row.red;
-          stats[pId].games = row.played;
-          stats[pId].teams = { ...stats[pId].teams, ...row.teamsMap };
-        }
+
+        stats[pId].goals += row.goals;
+        stats[pId].assists += row.assists;
+        stats[pId].goals_assists += row.assists + row.goals;
+        stats[pId].yellow += row.yellow;
+        stats[pId].red += row.red;
+        stats[pId].games += row.played;
+        stats[pId].teams = { ...stats[pId].teams, ...row.teamsMap };
       }
       return stats;
     }, {});
