@@ -18,9 +18,7 @@ export const IgraphicsPlayersComponent = forwardRef(
 
     if (!season) return;
     if (!schema) return;
-
     season.calculate();
-    if (!season.playersStats) return;
 
     const players = Object.values(season.playersStats);
     const categories =

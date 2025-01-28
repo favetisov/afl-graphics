@@ -91,11 +91,19 @@ export class Stage extends AbstractModel {
   calculate() {
     if (this.previousStage) this.previousStage.calculate();
 
-    const data = this.previousStage?.calculated || {
-      playersStatsMap: {},
-      teamsStatsMap: {},
+    const data = {
+      playersStatsMap: {}, // стату по игрокам не суммируем!
+      teamsStatsMap: this.previousStage?.calculated?.teamsStatsMap || {},
     };
+
     data.playersStatsMap = {}; // стату по игрокам не суммируем!
+    // if (this.previousStage) {
+    //   Object.values(data.playersStatsMap).forEach((d) => {
+    //     d.yellow = 0;
+    //     d.red = 0;
+    //     // дикий костыль, карточки не суммируем. переделать нормально
+    //   });
+    // }
 
     const defaultPlayerStats = (player: Player) => ({
       player,

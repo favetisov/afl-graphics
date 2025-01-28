@@ -54,9 +54,19 @@ export class Season extends AbstractModel {
   };
 
   calculate() {
+    // по-идиотски перезаписываем значения. разобраться и сделать нормально
     this.playersStats = orderBy(this.stages, ["_id"], ["asc"]).reduce(
       (stats, stage) => {
         if (!stage.calculated) stage.calculate();
+        console.log(
+          stage._id,
+          orderBy(
+            Object.values(stage.calculated.playersStatsMap),
+            ["goals"],
+            ["desc"]
+          )[0]
+        );
+
         for (const pId in stage.calculated.playersStatsMap) {
           const row = stage.calculated.playersStatsMap[pId];
 
@@ -73,7 +83,7 @@ export class Season extends AbstractModel {
 
           stats[pId].goals += row.goals;
           stats[pId].assists += row.assists;
-          stats[pId].goals_assists += row.assists + row.goals;
+          stats[pId].goals_assists += row.goals + row.assists;
           // stats[pId].yellow += row.yellow;
           // stats[pId].red += row.red;
 
