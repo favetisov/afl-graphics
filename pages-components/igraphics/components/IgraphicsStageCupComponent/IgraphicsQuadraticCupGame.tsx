@@ -1,35 +1,45 @@
-import s from './IgraphicsQuadraticCupGame.module.scss';
-import { IgraphicsQuadraticCupGameRow } from '@/pages-components/igraphics/components/IgraphicsStageCupComponent/IgraphicsQuadraticCupGameRow';
-import { forwardRef, useEffect, useState } from 'react';
+import s from "./IgraphicsQuadraticCupGame.module.scss";
+import { IgraphicsQuadraticCupGameRow } from "@/pages-components/igraphics/components/IgraphicsStageCupComponent/IgraphicsQuadraticCupGameRow";
+import { forwardRef, useEffect, useState } from "react";
 
-export const IgraphicsQuadraticCupGame = forwardRef(({ slot, schema }: any, ref) => {
-  const [tour, setTour] = useState('');
+export const IgraphicsQuadraticCupGame = forwardRef(
+  ({ slot, schema, isFirstRound, isLastRound }: any, ref) => {
+    const [tour, setTour] = useState("");
 
-  useEffect(() => {
-    setTour(slot.tour);
-  }, [slot]);
+    useEffect(() => {
+      setTour(slot.tour);
+    }, [slot]);
 
-  return (
-    <div className={s.game} id={slot.tour}>
-      <input className={s.tour} value={tour} onChange={e => setTour(e.target.value)} />
-      <div className={s.slot} ref={el => (slot.el = el)}>
-        <IgraphicsQuadraticCupGameRow
-          key={'home ' + slot.netPosition}
-          schema={schema}
-          teamLogo={slot.teamHome.logo}
-          teamName={slot.teamHome.shortName}
-          teamScore={slot.scoreHome}
-          team={slot.teamHome}
+    return (
+      <div className={s.game} id={slot.tour}>
+        <input
+          className={s.tour}
+          value={tour}
+          onChange={(e) => setTour(e.target.value)}
         />
-        <IgraphicsQuadraticCupGameRow
-          key={'away ' + slot.netPosition}
-          schema={schema}
-          teamLogo={slot.teamAway.logo}
-          teamName={slot.teamAway.shortName}
-          teamScore={slot.scoreAway}
-          team={slot.teamAway}
-        />
+        <div className={s.slot} ref={(el) => (slot.el = el)}>
+          <IgraphicsQuadraticCupGameRow
+            key={"home " + slot.netPosition}
+            schema={schema}
+            teamLogo={slot.teamHome.logo}
+            teamName={slot.teamHome.shortName}
+            teamScore={slot.scoreHome}
+            team={slot.teamHome}
+          />
+          {/* {!isFirstRound && <div className={s.barBefore} />} */}
+          {/* {!isFirstRound && <div className={s.verticalBar} />} */}
+          {/* {!isLastRound && <div className={s.barAfter} />} */}
+
+          <IgraphicsQuadraticCupGameRow
+            key={"away " + slot.netPosition}
+            schema={schema}
+            teamLogo={slot.teamAway.logo}
+            teamName={slot.teamAway.shortName}
+            teamScore={slot.scoreAway}
+            team={slot.teamAway}
+          />
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);

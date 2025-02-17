@@ -3,6 +3,7 @@
   color: white;
   margin: 40px 0;
   max-width: 900px;
+  position: relative;
 
   &[id='for 3rd place'] {
     transform: translateX(300px);
@@ -98,5 +99,34 @@
       height: 50%;
       background: var(--borderColor);
     }
+  }
+
+  .barBefore {
+    position: absolute;
+    bottom: 160px; 
+    left: -35px; 
+    width: 30px;
+    height: 10px;
+    background: currentColor;
+    z-index: 1;
+  }
+  .barAfter {
+    position: absolute;
+    bottom: 160px; 
+    right: -35px; 
+    width: 30px;
+    height: 10px;
+    background: currentColor;
+    z-index: 1;
+  }
+  .verticalBar {
+    position: absolute;
+    bottom: 160px; 
+    transform: translateY(50%); 
+    left: -65px;  
+    width: 10px;
+    height: 400px; 
+    background: currentColor;
+    z-index: 1;
   }
 }
