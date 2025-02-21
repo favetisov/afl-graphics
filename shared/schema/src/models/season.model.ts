@@ -84,11 +84,14 @@ export class Season extends AbstractModel {
           stats[pId].goals += row.goals;
           stats[pId].assists += row.assists;
           stats[pId].goals_assists += row.goals + row.assists;
-          // stats[pId].yellow += row.yellow;
-          // stats[pId].red += row.red;
 
-          stats[pId].yellow = row.yellow;
-          stats[pId].red = row.red;
+          if (stage.champ.country.league.name.toLowerCase().includes("tula")) {
+            stats[pId].yellow = row.yellow;
+            stats[pId].red = row.red;
+          } else {
+            stats[pId].yellow += row.yellow;
+            stats[pId].red += row.red;
+          }
 
           stats[pId].games += row.played;
           stats[pId].teams = { ...stats[pId].teams, ...row.teamsMap };
