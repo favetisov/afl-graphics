@@ -83,9 +83,20 @@ export class Stage extends AbstractModel {
 
   getTeamPoints(game: Game, side: GameSide): number {
     game; //todo add other sports
-    if (side.isWinner) return 3;
-    else if (side.isLoser) return 0;
-    else return 1;
+    const opponentSide = game.getTeamOpponentSide(side.team);
+    if (side.isWinner) {
+      if (side.score.pen > 0) {
+        return 2; // победа по пенальти дает 2 очка победителю и 1 проигравшему
+      } else {
+        return 3;
+      }
+    } else if (side.isLoser) {
+      if (opponentSide.score.pen > 0) {
+        return 1;
+      } else {
+        return 0;
+      }
+    } else return 1;
   }
 
   calculate() {
@@ -103,7 +114,7 @@ export class Stage extends AbstractModel {
     //     d.red = 0;
     //     // дикий костыль, карточки не суммируем. переделать нормально
     //   });
-    // }
+    // } з
 
     const defaultPlayerStats = (player: Player) => ({
       player,

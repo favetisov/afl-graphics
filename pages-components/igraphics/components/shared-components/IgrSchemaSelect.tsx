@@ -36,30 +36,33 @@ export const IgrSchemaSelect = ({
   const patternIconByName = {
     "big-right": (
       <img
-        src={`/igraphics/patterns-new/big-right.svg`}
+        src={`/graphics/igraphics/patterns-new/big-right.svg`}
         className={s.background}
       />
     ),
     "light-right": (
       <img
-        src={`/igraphics/patterns-new/light-right.svg`}
+        src={`/graphics/igraphics/patterns-new/light-right.svg`}
         className={s.background}
       />
     ),
     "light-left": (
       <img
-        src={`/igraphics/patterns-new/light-left.svg`}
+        src={`/graphics/igraphics/patterns-new/light-left.svg`}
         className={s.background}
       />
     ),
     bottom: (
       <img
-        src={`/igraphics/patterns-new/bottom.svg`}
+        src={`/graphics/igraphics/patterns-new/bottom.svg`}
         className={s.background}
       />
     ),
     ball: (
-      <img src={`/igraphics/patterns-new/ball.svg`} className={s.background} />
+      <img
+        src={`/graphics/igraphics/patterns-new/ball.svg`}
+        className={s.background}
+      />
     ),
     worldcup: (
       <>
@@ -71,7 +74,7 @@ export const IgrSchemaSelect = ({
     ),
     chaika: (
       <img
-        src={`/igraphics/patterns-new/chaika.svg`}
+        src={`/graphics/igraphics/patterns-new/chaika.svg`}
         className={s.background}
       />
     ),
@@ -86,7 +89,7 @@ export const IgrSchemaSelect = ({
             opacity: 0.8,
             objectFit: "cover",
           }}
-          src="/igraphics/patterns/wc2023-bg.png"
+          src="/graphics/igraphics/patterns/wc2023-bg.png"
           alt=""
         />
         <img
@@ -97,11 +100,11 @@ export const IgrSchemaSelect = ({
             width: 50,
             objectFit: "cover",
           }}
-          src="/igraphics/patterns/wc2023-lt.png"
+          src="/graphics/igraphics/patterns/wc2023-lt.png"
           alt=""
         />
         <img
-          src={`/igraphics/patterns-new/light-right.svg`}
+          src={`/graphics/igraphics/patterns-new/light-right.svg`}
           style={{ width: 50, position: "absolute", bottom: -50, right: 0 }}
           className={s.background}
         />

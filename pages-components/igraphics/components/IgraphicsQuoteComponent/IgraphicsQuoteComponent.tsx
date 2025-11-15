@@ -107,7 +107,7 @@ export const IgraphicsQuoteComponent = observer(
           <div className={s.playerPhoto}>
             <PhotoLoader
               className={s.photo}
-              defaultUrl={"/igraphics/demo/messi.jpg"}
+              defaultUrl={"/graphics/igraphics/demo/messi.jpg"}
               onImg={() => {}}
               height={4000}
               width={4000}

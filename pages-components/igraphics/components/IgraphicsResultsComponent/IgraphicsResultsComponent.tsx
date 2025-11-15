@@ -6,7 +6,7 @@ import { IgrDayGames } from "@/pages-components/igraphics/components/shared-comp
 import { IgrSubtitle } from "@/pages-components/igraphics/components/shared-components/IgrSubtitle";
 import { IgrTitle } from "@/pages-components/igraphics/components/shared-components/IgrTitle";
 import dayjs from "dayjs";
-import { userState } from "ftb-models";
+import { GameState, userState } from "ftb-models";
 import { groupBy } from "lodash";
 import sortBy from "lodash/sortBy";
 import { forwardRef } from "react";
@@ -23,6 +23,9 @@ export const IgraphicsResultsComponent = forwardRef(
     const games = season.games
       .filter((g) => g.dt > fromDate && g.dt < toDate.add(1, "d"))
       .filter((g) => {
+        if (mode == "results" && g.stateCode != GameState.CLOSED) return false;
+        if (mode == "schedule" && g.stateCode == GameState.CLOSED) return false;
+
         if (teamId && teamId !== "all") {
           return g.home.team._id == teamId || g.away.team._id == teamId;
         } else {

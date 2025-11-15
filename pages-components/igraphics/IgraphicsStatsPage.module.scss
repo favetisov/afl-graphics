@@ -38,7 +38,11 @@
   transform-origin: left top;
 }
 
-.controlElement {
+.containerWrapper {
+  width: 100%;
+  // max-width: 100%; 
+  // max-height: 500px;
+  overflow: auto;
 }
 
 @media screen and (max-width: 600px) {

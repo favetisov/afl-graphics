@@ -158,7 +158,7 @@ export const IgraphicsCoverPhotoComponent = forwardRef(
         <div className={s.playerPhoto}>
           <PhotoLoader
             className={s.photo}
-            defaultUrl={"/igraphics/demo/messi.jpg"}
+            defaultUrl={"/graphics/igraphics/demo/messi.jpg"}
             onImg={() => {}}
             height={3500}
             width={3500}

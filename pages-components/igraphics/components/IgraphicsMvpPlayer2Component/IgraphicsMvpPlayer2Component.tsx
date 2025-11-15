@@ -59,7 +59,7 @@ export const IgraphicsMvpPlayer2Component = forwardRef(
               >
                 <PhotoLoader
                   className={s.loaderPhoto}
-                  defaultUrl={"/igraphics/demo/messi.jpg"}
+                  defaultUrl={"/graphics/igraphics/demo/messi.jpg"}
                   onImg={() => {}}
                   height={2500}
                   width={2500}

@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/graphics', 
   reactStrictMode: true,
   swcMinify: true,
   runtime: 'experimental-edge',
@@ -17,7 +18,7 @@ const nextConfig = {
       issuer: /\.[jt]sx?$/,
       use: {
         loader: '@svgr/webpack',
-        options: {
+        options: { 
           svgoConfig: {
             plugins: [
               {

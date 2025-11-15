@@ -1,23 +1,38 @@
-import { IgrBackground } from '../shared-components/IgrBackground';
-import s from './IgraphicsTop5PhotoPlayersComponent.module.scss';
-import { IgrAflRegion } from '@/pages-components/igraphics/components/shared-components/IgrAflRegion';
-import { IgrElContainer } from '@/pages-components/igraphics/components/shared-components/IgrElContainer';
-import { IgrTopPLayersRow } from '@/pages-components/igraphics/components/shared-components/IgrTopPlayersRow';
-import { League } from '@/shared/schema/src/models/league.model';
-import { Season } from '@/shared/schema/src/models/season.model';
-import { PhotoLoader } from '@/shared/shared-frontend/components/PhotoLoader/PhotoLoader';
-import orderBy from 'lodash-es/orderBy';
-import { forwardRef, useEffect, useState } from 'react';
-import AutosizeInput from 'react-input-autosize';
+import { IgrBackground } from "../shared-components/IgrBackground";
+import s from "./IgraphicsTop5PhotoPlayersComponent.module.scss";
+import { IgrAflRegion } from "@/pages-components/igraphics/components/shared-components/IgrAflRegion";
+import { IgrElContainer } from "@/pages-components/igraphics/components/shared-components/IgrElContainer";
+import { IgrTopPLayersRow } from "@/pages-components/igraphics/components/shared-components/IgrTopPlayersRow";
+import { League } from "@/shared/schema/src/models/league.model";
+import { Season } from "@/shared/schema/src/models/season.model";
+import { PhotoLoader } from "@/shared/shared-frontend/components/PhotoLoader/PhotoLoader";
+import orderBy from "lodash-es/orderBy";
+import { forwardRef, useEffect, useState } from "react";
+import AutosizeInput from "react-input-autosize";
 
 const titleByCategory = {
-  goals: 'топ-5. Бомбардиры',
-  assists: 'топ-5. Ассистенты',
-  goals_assists: 'топ-5. Гол + пас',
+  goals: "топ-5. Бомбардиры",
+  assists: "топ-5. Ассистенты",
+  goals_assists: "топ-5. Гол + пас",
 };
 
 export const IgraphicsTop5PhotoPlayersComponent = forwardRef(
-  ({ season, league, schema, pattern, category }: { season: Season; league: League; category?: 'goals' | 'assists' | 'goals_assists'; schema: any; pattern: any }, ref) => {
+  (
+    {
+      season,
+      league,
+      schema,
+      pattern,
+      category,
+    }: {
+      season: Season;
+      league: League;
+      category?: "goals" | "assists" | "goals_assists";
+      schema: any;
+      pattern: any;
+    },
+    ref
+  ) => {
     const [title, setTitle] = useState(`топ-5. Бомбардиры`);
     const [hiddenTitle, setHiddenTitle] = useState(false);
 
@@ -35,7 +50,11 @@ export const IgraphicsTop5PhotoPlayersComponent = forwardRef(
       return;
     }
 
-    let players = orderBy(Object.values(season.playersStats), [category], ['desc'])?.slice(0, 5);
+    let players = orderBy(
+      Object.values(season.playersStats),
+      [category],
+      ["desc"]
+    )?.slice(0, 5);
 
     return (
       <div className={s.tableWrapper}>
@@ -47,10 +66,13 @@ export const IgraphicsTop5PhotoPlayersComponent = forwardRef(
         </div>
 
         <div className={s.content}>
-          <div className={s.title + ' ' + (hiddenTitle ? s.hidden : null)} style={{ color: schema.colors.linkFont }}>
+          <div
+            className={s.title + " " + (hiddenTitle ? s.hidden : null)}
+            style={{ color: schema.colors.linkFont }}
+          >
             <IgrElContainer onClose={() => setHiddenTitle(true)}>
               <AutosizeInput
-                onChange={e => {
+                onChange={(e) => {
                   setTitle(e.target.value);
                 }}
                 value={title}
@@ -62,30 +84,44 @@ export const IgraphicsTop5PhotoPlayersComponent = forwardRef(
               />
             </IgrElContainer>
           </div>
-          <div style={{ background: schema.colors.bg }} className={s.subtitle + ' ' + (subtitleHidden ? s.hidden : null)}>
+          <div
+            style={{ background: schema.colors.bg }}
+            className={s.subtitle + " " + (subtitleHidden ? s.hidden : null)}
+          >
             <IgrElContainer onClose={() => setSubtitleHidden(true)}>
               <div className={s.row}>
                 <AutosizeInput
-                  onChange={e => {
+                  onChange={(e) => {
                     setSubtitleFirst(e.target.value);
                   }}
                   value={subtitleFirst}
-                  inputStyle={{ fontSize: 80, color: '#fff' }}
+                  inputStyle={{ fontSize: 80, color: "#fff" }}
                 />
-                <div className={s.delimiter} style={{ backgroundColor: schema.colors.subTitleDelimiterLight }} />
+                <div
+                  className={s.delimiter}
+                  style={{
+                    backgroundColor: schema.colors.subTitleDelimiterLight,
+                  }}
+                />
                 <AutosizeInput
-                  onChange={e => {
+                  onChange={(e) => {
                     setSubtitleSecond(e.target.value);
                   }}
                   value={subtitleSecond}
-                  inputStyle={{ fontSize: 80, color: '#fff' }}
+                  inputStyle={{ fontSize: 80, color: "#fff" }}
                 />
               </div>
             </IgrElContainer>
           </div>
           <div key={category} className={s.players}>
             {players.map((p, idx) => (
-              <IgrTopPLayersRow big={idx == 0} key={p.player._id} playerStats={p} schema={schema} category={category} />
+              <IgrTopPLayersRow
+                big={idx == 0}
+                key={p.player._id}
+                playerStats={p}
+                schema={schema}
+                category={category}
+              />
             ))}
           </div>
         </div>
@@ -97,10 +133,15 @@ export const IgraphicsTop5PhotoPlayersComponent = forwardRef(
             </clipPath>
           </svg>
           <div className={s.clipped}>
-            <PhotoLoader defaultUrl={'/igraphics/demo/messi.jpg'} onImg={() => {}} height={5000} width={5000} />
+            <PhotoLoader
+              defaultUrl={"/graphics/igraphics/demo/messi.jpg"}
+              onImg={() => {}}
+              height={5000}
+              width={5000}
+            />
           </div>
         </div>
       </div>
     );
-  },
+  }
 );

@@ -139,7 +139,7 @@ export const IgraphicsMvpPlayerComponent = forwardRef(
           </svg>
           <div className={s.clipped}>
             <PhotoLoader
-              defaultUrl={"/igraphics/demo/messi.jpg"}
+              defaultUrl={"/graphics/igraphics/demo/messi.jpg"}
               onImg={() => {}}
               height={5000}
               width={5000}

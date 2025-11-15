@@ -33,6 +33,7 @@ import { Game } from "shared/schema/src/models/game.model";
 import { BallFootball as BallFootballIcon } from "tabler-icons-react";
 import { AugmentedReality as AugmentedRealityIcon } from "tabler-icons-react";
 import sortBy from "lodash/sortBy";
+import domtoimage from "dom-to-image-more";
 
 const headers = () => {
   const h = new Headers();
@@ -103,7 +104,129 @@ export const IgraphicsVideoPage = () => {
   const season: Season = useModel("Season", seasonId);
   const containerRef = useRef<any>();
 
-  const exportAsImage = async (filename) => {
+  const exportAsImage = async (fileName) => {
+    setDownloading(true);
+
+    const el = (containerRef.current as any)?.firstChild.firstChild as any;
+
+    // find all images in the container and replace their src with base64 data
+    const images = el.querySelectorAll("img");
+    for (const img of images) {
+      if (img.src.startsWith("http")) {
+        try {
+          const response = await fetch(img.src);
+          const blob = await response.blob();
+          img.src = URL.createObjectURL(blob);
+        } catch (error) {
+          console.error("Error fetching image:", error);
+        }
+      }
+    }
+    // remove all source elements from the container
+    const sources = el.querySelectorAll("source");
+    sources.forEach((s) => s.remove());
+
+    domtoimage
+      .toPng(el, { width: el.clientWidth, height: el.clientHeight })
+      .then(function (dataUrl) {
+        var image = new Image();
+        image.src = dataUrl;
+        if (currentComponent.value != "events") {
+          const link = document.createElement("a");
+          link.download = fileName + ".png";
+          link.href = dataUrl;
+          link.click();
+        } else {
+          image.onload = () => {
+            let canvas = window.document.createElement("canvas");
+            canvas.width = image.width;
+            canvas.height = image.height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0);
+
+            const canvasEvent = window.document.createElement("canvas");
+            canvasEvent.width = resolutions[resolution].size.width;
+            canvasEvent.height = resolutions[resolution].size.height;
+            const ctxEvent = canvasEvent.getContext("2d");
+
+            const events = [
+              ...containerRef.current?.querySelectorAll(".event-row"),
+            ];
+
+            const SCORE_HEIGHT = 150;
+            const EVENT_HEIGHT = 280;
+            const MARGIN_EVENT = 5;
+
+            let TOP_Y = 0;
+
+            const zip = new JSZip();
+
+            const scale =
+              1 -
+              Math.abs(
+                (resolutions[resolution].size.width / 5000) * 100 - 100
+              ) /
+                100;
+
+            ctxEvent.scale(scale, scale);
+
+            events.forEach((el, idx) => {
+              ctxEvent.clearRect(0, 0, 5000, 5000);
+              ctxEvent.drawImage(
+                canvas,
+                0,
+                TOP_Y,
+                1300,
+                SCORE_HEIGHT,
+                50,
+                50,
+                1300,
+                SCORE_HEIGHT
+              );
+
+              if (idx % 2 !== 0) {
+                ctxEvent.drawImage(
+                  canvas,
+                  1300,
+                  TOP_Y,
+                  2000,
+                  EVENT_HEIGHT,
+                  resolutions[resolution].playerPosition.dx,
+                  resolutions[resolution].playerPosition.dy,
+                  2000,
+                  EVENT_HEIGHT
+                );
+              }
+
+              const height = idx % 2 == 0 ? SCORE_HEIGHT : EVENT_HEIGHT;
+              TOP_Y += height + MARGIN_EVENT;
+
+              zip.file(
+                `event-${idx + 1}.png`,
+                urlToPromise(canvasEvent.toDataURL()) as any,
+                { base64: true }
+              );
+            });
+
+            zip.generateAsync({ type: "blob" }).then((blob) => {
+              saveAs(
+                blob,
+                `${game.home.team.name} - ${game.away.team.name}.zip`
+              );
+              setDownloading(false);
+            });
+          };
+        }
+      })
+      .catch(function (error) {
+        console.error("failed image creation", error);
+      })
+      .finally(() => {
+        setDownloading(false);
+      });
+  };
+
+  const exportAsImageOld = async (filename) => {
     setDownloading(true);
     const head = window.document.head.innerHTML.replace(
       new RegExp('href="/', "g"),

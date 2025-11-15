@@ -19,7 +19,6 @@ import { IgraphicsCalendarComponent } from "./components/IgraphicsCalendarCompon
 import { IgraphicsBirthdaysComponent } from "./components/IgraphicsBirthdaysComponent/IgraphicsBirthdaysComponent";
 import { useModel } from "@/tools/model-hooks";
 import { LeaguesSelect } from "@/shared/shared-frontend/components/LeaguesSelect/LeaguesSelect";
-import { env } from "@/shared/env/env";
 import { AugmentedReality as AugmentedRealityIcon } from "tabler-icons-react";
 import { Season } from "@/shared/schema/src/models/season.model";
 import { League } from "@/shared/schema/src/models/league.model";
@@ -29,6 +28,7 @@ import s from "./IgraphicsStatsPage.module.scss";
 import { IgraphicsTop5PlayersComponent } from "@/pages-components/igraphics/components/IgraphicsTop5PlayersComponent/IgraphicsTop5PlayersComponent";
 import { IgraphicsTop5PhotoPlayersComponent } from "@/pages-components/igraphics/components/IgraphicsTop5PhotoPlayersComponent/IgraphicsTop5PhotoPlayersComponent";
 import { sortBy, uniqBy } from "lodash";
+import domtoimage from "dom-to-image-more";
 
 const components = [
   { value: "standings", label: "Standings" },
@@ -48,6 +48,21 @@ const headers = () => {
   h.append("Content-Type", "application/json");
   return h;
 };
+
+function blobToBase64(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === "string") {
+        resolve(reader.result);
+      } else {
+        reject(new Error("Ошибка при преобразовании blob в base64"));
+      }
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
 
 export const IgraphicsStatsPage = () => {
   const [league, setLeague] = useState<League>();
@@ -86,64 +101,59 @@ export const IgraphicsStatsPage = () => {
 
   const containerRef = useRef();
 
-  const exportAsImage = async (filename) => {
+  const exportAsImage = async (fileName) => {
     setDownloading(true);
-    const head = window.document.head.innerHTML.replace(
-      new RegExp('href="/', "g"),
-      'href="' + env.localhost + "/"
-    );
-    const content = (containerRef.current as any)?.firstChild?.innerHTML;
 
-    const response = await fetch(env.igrHost, {
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "omit",
-      method: "POST",
-      redirect: "error",
-      headers: headers(),
-      body: JSON.stringify({ head, content }),
-    });
+    try {
+      const el = (containerRef.current as any)?.firstChild.firstChild as any;
 
-    // const elements = domToJSON((containerRef.current as any)?.firstChild);
-    // console.log(elements);
+      // find all images in the container and replace their src with base64 data
+      const images = (containerRef.current as any)?.querySelectorAll("img");
+      for (const img of images) {
+        console.log("img", img);
+        if (img.src.startsWith("http")) {
+          try {
+            const response = await fetch(img.src, { mode: "cors" });
+            const blob = await response.blob();
+            const base64 = await blobToBase64(blob);
+            img.src = base64;
+          } catch (error) {
+            console.error("Error fetching image:", error);
+          }
+        }
+      }
+      // remove all source elements from the container
+      const sources = el.querySelectorAll("source");
+      sources.forEach((s) => s.remove());
 
-    // const elements = [
-    //   { type: 'div', style: { color: 'lime', backgroundColor: 'white' } },
-    //   { type: 'div', style: { color: 'red', backgroundColor: 'white' } },
-    // ];
-
-    // const response = await fetch('http://localhost:3005/plain/img', {
-    // mode: 'cors',
-    // cache: 'no-cache',
-    // credentials: 'omit',
-    // method: 'POST',
-    // redirect: 'error',
-    // headers: headers(),
-    // method: 'POST',
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // },
-    // body: JSON.stringify({ head, content }),
-    // body: JSON.stringify({ elements }),
-    // });
-    const reader = new FileReader();
-    reader.readAsDataURL(await response.blob());
-    reader.onloadend = function () {
-      downloadImage(reader.result, filename);
-    };
+      domtoimage
+        .toPng(el, { width: el.clientWidth, height: el.clientHeight })
+        .then(function (dataUrl) {
+          var img = new Image();
+          img.src = dataUrl;
+          const link = document.createElement("a");
+          link.download = fileName + ".png";
+          link.href = dataUrl;
+          link.click();
+        });
+    } catch (error) {
+      console.error("Error exporting image:", error);
+    } finally {
+      setDownloading(false);
+    }
   };
 
-  const downloadImage = (img, fileName) => {
-    const fakeLink: any = window.document.createElement("a");
-    fakeLink.style = "display:none;";
-    fakeLink.download = fileName;
-    fakeLink.href = img;
-    document.body.appendChild(fakeLink);
-    fakeLink.click();
-    document.body.removeChild(fakeLink);
-    fakeLink.remove();
-    setDownloading(false);
-  };
+  // const downloadImage = (img, fileName) => {
+  //   const fakeLink: any = window.document.createElement("a");
+  //   fakeLink.style = "display:none;";
+  //   fakeLink.download = fileName;
+  //   fakeLink.href = img;
+  //   document.body.appendChild(fakeLink);
+  //   fakeLink.click();
+  //   document.body.removeChild(fakeLink);
+  //   fakeLink.remove();
+  //   setDownloading(false);
+  // };
 
   const scaleContainer = (el, contentWidth) => {
     if (el) {
@@ -161,7 +171,7 @@ export const IgraphicsStatsPage = () => {
       return (
         <>
           <Divider variant="dashed" my={"sm"} />
-          <div ref={containerRef}>
+          <div ref={containerRef} className={s.containerWrapper}>
             {/*<div style={{ display: 'flex' }} className={s.test}>*/}
             {/*  <TeamLogo team={{ logo: 'Millwall' }} />*/}
             {/*  <IgrTeamLogo team={{ logo: 'Millwall' }} />*/}
@@ -189,7 +199,7 @@ export const IgraphicsStatsPage = () => {
       return (
         <>
           <Divider variant="dashed" my={"sm"} />
-          <div ref={containerRef}>
+          <div ref={containerRef} className={s.containerWrapper}>
             <div
               ref={(el) => scaleContainer(el, 4000)}
               className={
@@ -212,7 +222,7 @@ export const IgraphicsStatsPage = () => {
       return (
         <>
           <Divider variant="dashed" my={"sm"} />
-          <div ref={containerRef}>
+          <div ref={containerRef} className={s.containerWrapper}>
             <div
               ref={(el) => scaleContainer(el, 4000)}
               className={
@@ -254,7 +264,7 @@ export const IgraphicsStatsPage = () => {
             />
           </Group>
           <Divider variant="dashed" my={"sm"} />
-          <div ref={containerRef}>
+          <div ref={containerRef} className={s.containerWrapper}>
             <div
               ref={(el) => scaleContainer(el, 4000)}
               className={
@@ -319,7 +329,7 @@ export const IgraphicsStatsPage = () => {
           </Group>
 
           <Divider variant="dashed" my={"sm"} />
-          <div ref={containerRef}>
+          <div ref={containerRef} className={s.containerWrapper}>
             <div
               ref={(el) => scaleContainer(el, 4000)}
               className={
@@ -345,9 +355,9 @@ export const IgraphicsStatsPage = () => {
       return (
         <>
           <Divider variant={"dashed"} my={"md"} />
-          <div ref={containerRef}>
+          <div ref={containerRef} className={s.containerWrapper}>
             <div
-              ref={(el) => scaleContainer(el, 6000)}
+              // ref={(el) => scaleContainer(el, 6000)}
               className={
                 s.imgContainer +
                 " " +
@@ -387,9 +397,9 @@ export const IgraphicsStatsPage = () => {
             />
           </Group>
           <Divider variant={"dashed"} my={"md"} />
-          <div ref={containerRef}>
+          <div ref={containerRef} className={s.containerWrapper}>
             <div
-              ref={(el) => scaleContainer(el, 4000)}
+              // ref={(el) => scaleContainer(el, 4000)}
               className={
                 s.imgContainer +
                 " " +
@@ -444,7 +454,7 @@ export const IgraphicsStatsPage = () => {
             </>
           )}
           <Divider variant={"dashed"} my={"md"} />
-          <div ref={containerRef}>
+          <div ref={containerRef} className={s.containerWrapper}>
             <div
               ref={(el) => scaleContainer(el, 4000)}
               className={
@@ -486,7 +496,11 @@ export const IgraphicsStatsPage = () => {
               placeholder={"stage"}
             />
           </Group>
-          <div ref={containerRef} style={{ marginTop: "20px" }}>
+          <div
+            ref={containerRef}
+            className={s.containerWrapper}
+            style={{ marginTop: "20px" }}
+          >
             <div
               ref={(el) => scaleContainer(el, 4000)}
               className={
@@ -527,7 +541,11 @@ export const IgraphicsStatsPage = () => {
               placeholder={"stage"}
             />
           </Group>
-          <div ref={containerRef} style={{ marginTop: "20px" }}>
+          <div
+            ref={containerRef}
+            className={s.containerWrapper}
+            style={{ marginTop: "20px" }}
+          >
             <div
               ref={(el) => scaleContainer(el, 4000)}
               className={

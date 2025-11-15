@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port 3015",
     "lint": "next lint"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "@vercel/og": "^0.0.20",
     "dayjs": "^1.11.5",
     "dexie": "^3.2.2",
+    "dom-to-image-more": "^3.6.0",
     "file-saver": "^2.0.5",
     "ftb-models": "^4.1.14",
     "joi": "^17.6.0",
