@@ -16,6 +16,9 @@ export const IgraphicsVideoResultPhotoComponent = forwardRef(
     const [score, setScore] = useState(
       `${game.home.score.ft}:${game.away.score.ft}`
     );
+    const [penScore, setPenScore] = useState(
+      `${game.home.score.pen}:${game.away.score.pen}`
+    );
 
     const filterEvents = (team: Team) =>
       game.events.filter(
